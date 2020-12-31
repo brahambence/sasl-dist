@@ -755,31 +755,35 @@ h2 {
         const first_script_tag = document.getElementsByTagName('script')[0];
         first_script_tag.parentNode.insertBefore(tag, first_script_tag);
         let youtube_player;
+        function on_player_state_change(event) {
+            console.log({event})
+            // YouTube Player API event reference: https://developers.google.com/youtube/iframe_api_reference#Events
+            if (event.data === 1 || event.data === 3) {
+                toggle_play_pause_buttons("pause");
+            } else if (event.data === -1 || event.data === 0 || event.data === 2 || event.data === 5) {
+                toggle_play_pause_buttons("play");
+            }
+        }
+        function on_player_ready(event) {
+            setTimeout(() => {
+           const autoplay_promise = youtube_player.playVideo(); 
+           console.log(autoplay_promise);
+            }, 1000);
+        }
         function onYouTubePlayerAPIReady() {
             youtube_player = new YT.Player("youtube-player", {
-                height: '100',
-                width: '200',
-                videoId: 'oas5nAlfrwg',
-                    events: {
-                    'onStateChange': on_player_state_change,
-                    'onReady': on_player_ready
-                    },
-                playerVars: {
-                    modestbranding: 1, // Remove YouTube logo from controls bar
-                    iv_load_policy: 3, // Hide annotations
-                }
-            });
-            function on_player_state_change(event) {
-                // YouTube Player API event reference: https://developers.google.com/youtube/iframe_api_reference#Events
-                if (event.data === 1 || event.data === 3) {
-                    toggle_play_pause_buttons("pause");
-                } else if (event.data === -1 || event.data === 0 || event.data === 2 || event.data === 5) {
-                    toggle_play_pause_buttons("play");
-                }
+            height: '100',
+            width: '200',
+            videoId: 'oas5nAlfrwg',
+                events: {
+                'onStateChange': on_player_state_change,
+                'onReady': on_player_ready,
+                },
+            playerVars: {
+                modestbranding: 1, // Remove YouTube logo from controls bar
+                iv_load_policy: 3, // Hide annotations
             }
-            function on_player_ready(event) {
-                
-            }
+        });
         }
     </script>
     <style>
