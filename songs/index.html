@@ -1,0 +1,469 @@
+
+
+
+
+
+<html>
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <style>
+            
+
+body {
+    font-size: 16px;
+    margin: 0;
+    margin-top: 9.4rem;
+    background: #3A5C90;
+}
+
+h2 {
+    font-family: 'Capriola', sans-serif;
+    color: #FFFFFF;
+    font-weight: normal;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+
+.top-heading {
+    margin-top: 0;
+}
+        </style>
+        
+        <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Capriola&display=swap" rel="stylesheet">
+    </head>
+
+    <body>
+        
+    <div id="header">
+        
+        
+        
+        
+           
+    <a 
+        class="back"
+        onclick="(function(){window.history.back();})()"
+    >
+        <span class="back-icon">
+        🠔
+        </span>
+        <span class="back-label">
+        back
+        </span>
+    </a>
+
+    <style>
+        .back {
+            text-decoration: none;
+            font-family: 'Capriola', sans-serif;
+            transition: background .05s ease;
+            cursor: pointer;
+            color: rgba(255, 255, 255, 0.25);            
+            position: absolute;
+            margin: 1.6rem;
+            font-size: 2.8rem;
+        }
+
+        .back-label {
+            opacity: 0;
+            color: rgba(255, 255, 255, 0.25);
+        }
+
+        .back:hover .back-label {
+            transition: background .2s ease;
+            opacity: 1;
+        }
+
+
+        .back:hover {
+            color: #FFFFFF;
+            transition: background .2s ease;
+        }
+
+        .back:focus {
+            outline: none;
+            border-color: white;
+        }
+    </style>
+
+        
+
+        
+    <div id="header-logo">
+        
+<a href="/dist/">
+    <svg width="100%" height="100%" viewBox="0 0 378 169" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="38.5" cy="101.5" r="38.5" transform="rotate(-180 38.5 101.5)" fill="#FDFF8D"/>
+        <path d="M50 43.5C50 50.9558 56.0442 57 63.5 57C70.9558 57 77 50.9558 77 43.5C77 36.0442 70.9558 30 63.5 30C56.0442 30 50 36.0442 50 43.5Z" fill="#B2FF8D"/>
+        <circle cx="38.5" cy="101.5" r="13.5" transform="rotate(-180 38.5 101.5)" fill="#FF8D8D"/>
+        <path fill="#FFFFFF" d="M95.6641 128.961C95.6641 127.273 96.3438 125.281 97.7031 122.984C99.0625 120.688 99.9766 119.281 100.445 118.766C101.383 117.641 102.32 117.078 103.258 117.078C104.242 117.078 105.273 117.383 106.352 117.992C107.43 118.602 108.859 119.375 110.641 120.312C112.469 121.203 114.414 122.047 116.477 122.844C121.07 124.578 125.078 125.445 128.5 125.445C131.969 125.445 134.781 125.141 136.938 124.531C139.094 123.922 140.945 123.008 142.492 121.789C145.68 119.211 147.273 115.602 147.273 110.961C147.273 105.102 142.844 100.109 133.984 95.9844C131.453 94.8125 128.594 93.6406 125.406 92.4688C122.266 91.25 118.938 89.6328 115.422 87.6172C111.953 85.6016 108.836 83.2344 106.07 80.5156C99.9297 74.4219 96.8594 67.25 96.8594 59C96.8594 50.2344 100.445 43.2031 107.617 37.9062C114.32 32.9375 122.219 30.4531 131.312 30.4531C141.438 30.4531 149.758 32.6562 156.273 37.0625C159.836 39.4062 161.617 41.5859 161.617 43.6016C161.617 44.6797 160.984 46.4141 159.719 48.8047C158.453 51.1953 157.422 52.8125 156.625 53.6562C155.875 54.5 155.172 54.9219 154.516 54.9219C153.344 54.9219 151.797 54.2891 149.875 53.0234C148 51.7578 145.305 50.375 141.789 48.875C138.273 47.375 134.945 46.625 131.805 46.625C128.664 46.625 126.133 46.8828 124.211 47.3984C122.336 47.9141 120.695 48.6875 119.289 49.7188C116.383 51.9219 114.93 55.1328 114.93 59.3516C114.93 65.4453 119.102 70.2734 127.445 73.8359L134.266 76.6484C143.406 80.1641 150.344 84.0547 155.078 88.3203C161.594 94.2266 164.852 101.469 164.852 110.047C164.852 119.609 161.242 127.391 154.023 133.391C147.367 138.969 139.562 141.758 130.609 141.758C119.125 141.758 109.352 139.391 101.289 134.656C97.5391 132.5 95.6641 130.602 95.6641 128.961ZM248.594 136.273C248.594 138.758 247.375 140 244.938 140H238.117C236.289 140 235.188 139.648 234.812 138.945C234.438 138.195 234.227 137.539 234.18 136.977C234.133 136.367 234.039 135.641 233.898 134.797C233.617 132.5 233.219 130.016 232.703 127.344C229.047 134.047 223.305 138.477 215.477 140.633C212.711 141.383 209.664 141.758 206.336 141.758C203.008 141.758 199.68 141.195 196.352 140.07C193.023 138.992 190.07 137.375 187.492 135.219C181.68 130.344 178.773 123.945 178.773 116.023C178.773 107.352 181.961 100.719 188.336 96.125C193.586 92.4219 200.336 90.5703 208.586 90.5703C216.836 90.5703 223.82 92.9844 229.539 97.8125C229.68 96.2188 229.75 94.2266 229.75 91.8359C229.75 89.4453 229.281 87.0547 228.344 84.6641C227.406 82.2734 226.07 80.2812 224.336 78.6875C220.773 75.5469 215.805 73.9766 209.43 73.9766C203.711 73.9766 197.898 75.5469 191.992 78.6875C190.867 79.2969 189.883 79.6016 189.039 79.6016C187.773 79.6016 186.555 78.3594 185.383 75.875C184.117 73.3438 183.484 71.5156 183.484 70.3906C183.484 68.3281 185.031 66.3359 188.125 64.4141C194.031 60.7578 201.93 58.9297 211.82 58.9297C220.82 58.9297 228.273 61.3906 234.18 66.3125C241.164 72.2188 244.656 80.5625 244.656 91.3438C244.656 96.125 243.883 102.148 242.336 109.414C246.32 120.758 248.406 129.711 248.594 136.273ZM201.484 106.461C199.562 107.867 198.18 109.273 197.336 110.68C196.539 112.086 196.141 113.75 196.141 115.672C196.141 117.547 196.469 119.234 197.125 120.734C197.828 122.188 198.789 123.406 200.008 124.391C202.586 126.406 205.469 127.414 208.656 127.414C211.891 127.414 214.539 127.039 216.602 126.289C218.664 125.539 220.445 124.578 221.945 123.406C225.18 120.875 226.797 118.203 226.797 115.391C226.516 111.875 224.57 109.109 220.961 107.094C217.727 105.219 213.906 104.281 209.5 104.281C206.078 104.281 203.406 105.008 201.484 106.461ZM290.922 127.344C299.922 127.344 304.422 124.32 304.422 118.273C304.422 114.945 301.867 112.133 296.758 109.836C294.602 108.852 292.234 107.938 289.656 107.094C287.125 106.25 284.688 105.242 282.344 104.07C280 102.898 277.797 101.633 275.734 100.273C273.719 98.8672 271.961 97.2734 270.461 95.4922C267.367 91.7422 265.82 86.9844 265.82 81.2188C265.82 74.1875 268.75 68.6094 274.609 64.4844C279.812 60.7812 286.211 58.9297 293.805 58.9297C301.961 58.9297 308.781 60.5234 314.266 63.7109C316.141 64.8359 317.078 66.125 317.078 67.5781C317.078 69.6406 316.516 71.9141 315.391 74.3984C314.312 76.8359 313.023 78.0547 311.523 78.0547C310.07 78.0547 308.734 77.75 307.516 77.1406C306.344 76.5312 305.266 76.0156 304.281 75.5938C303.344 75.125 302.336 74.75 301.258 74.4688C298.914 73.7656 296.734 73.4141 294.719 73.4141C292.75 73.4141 291.156 73.5547 289.938 73.8359C288.719 74.1172 287.617 74.5625 286.633 75.1719C284.242 76.625 283.047 78.4062 283.047 80.5156C283.047 82.625 283.516 84.2422 284.453 85.3672C285.438 86.4922 286.773 87.5234 288.461 88.4609C290.148 89.3984 292.164 90.3359 294.508 91.2734L302.102 94.4375C308.242 97.1094 312.391 99.5234 314.547 101.68C318.766 105.992 320.875 110.984 320.875 116.656C320.875 123.781 318.438 129.641 313.562 134.234C308.172 139.25 300.508 141.758 290.57 141.758C280.492 141.758 272.922 139.812 267.859 135.922C265.375 134.047 264.133 132.359 264.133 130.859C264.133 129.359 264.391 128.023 264.906 126.852C265.469 125.633 266.172 124.227 267.016 122.633C267.906 120.992 269.078 120.172 270.531 120.172C272.031 120.172 273.602 120.852 275.242 122.211C276.93 123.523 279.227 124.719 282.133 125.797C285.039 126.828 287.969 127.344 290.922 127.344ZM358.07 120.664C358.07 123.992 359.242 125.656 361.586 125.656C362.336 125.656 363.297 125.445 364.469 125.023C366.625 124.227 367.938 123.828 368.406 123.828C369.484 123.828 370.328 124.508 370.938 125.867L373.117 130.859C373.398 131.562 373.539 132.219 373.539 132.828C373.539 133.906 372.648 135.219 370.867 136.766C367.305 139.719 362.641 141.195 356.875 141.195C346.375 141.195 341.125 134.188 341.125 120.172V19.9062C341.125 18.6406 341.5 17.5625 342.25 16.6719C343 15.7812 343.891 15.3359 344.922 15.3359H354.344C355.422 15.3359 356.312 15.7812 357.016 16.6719C357.719 17.5625 358.07 18.6406 358.07 19.9062V120.664Z"/>
+    </svg>
+</a>
+
+    </div>
+
+    <style>
+    #header-logo {
+        
+    margin: 0 auto;
+    width: auto;
+    max-width: 460px;
+    padding: 16px;
+
+        background: #3A5C90;
+        
+        
+            height: 80px;
+        
+    }
+    </style>
+
+        
+
+
+
+<div id="header-bottom-separator">
+</div>
+
+<style>
+#header-bottom-separator {
+    width: 100%;
+    height: 30px;
+    position: relative;
+    top: -30px;
+    border-radius: 0 0 100% 100% / 0 0 30% 30%;
+    border: 0;
+    border-bottom: 6px solid #27487B;
+}
+
+</style>
+    </div>
+    
+        <style>
+            #header {
+                width: 100%;
+                position: fixed;
+                top: 0;
+                z-index: 1;
+            }
+            #header-background-filler {
+                position: absolute;
+                z-index: -1;
+                background: #3A5C90;
+                width: 100%;
+                height: 100px;
+            }
+        </style>
+    
+
+
+
+        <h2 class="top-heading">pick a song</h2>
+        <div class="song-list">
+            
+                
+    <a class="song-list-item" href="../song/lunapop-qualcosa_di_grande.html">
+        <div class="language">italian</div>
+        <span class="artist">
+            Lùnapop
+        </span>
+        <span class="title">
+            Qualcosa di grande
+        </span>
+    </a>
+
+    
+    <style> 
+        .song-list-item {
+            display: block;
+            position: relative;
+            margin: 0 auto 1rem auto;
+            padding: 1rem;
+            background: #27487B;
+            text-decoration: none;
+            color: #FFFFFF;
+            border-radius: 7px;
+            border: 2px solid transparent;
+            text-align: left;
+            font-size: 1.4rem;
+            font-family: 'Fira Sans', sans-serif;
+            transition: background .05s ease;
+            width: 100%;
+        }
+
+        .song-list-item:hover, .song-list-item:focus {
+            border-color: #FFFFFF;
+            outline: none;
+        }
+
+        .language {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 1rem;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.25);
+        }
+
+        .artist {
+            color: #FDFF8D;
+            font-size: 2rem;
+        }
+        
+        .title {
+            display: block;
+            width: 100%;
+            color: #B2FF8D;
+        }
+    </style>
+
+            
+                
+    <a class="song-list-item" href="../song/nena-irgendwie_irgendwo_irgendwann.html">
+        <div class="language">german</div>
+        <span class="artist">
+            Nena
+        </span>
+        <span class="title">
+            Irgendwie Irgendwo Irgendwann
+        </span>
+    </a>
+
+    
+    <style> 
+        .song-list-item {
+            display: block;
+            position: relative;
+            margin: 0 auto 1rem auto;
+            padding: 1rem;
+            background: #27487B;
+            text-decoration: none;
+            color: #FFFFFF;
+            border-radius: 7px;
+            border: 2px solid transparent;
+            text-align: left;
+            font-size: 1.4rem;
+            font-family: 'Fira Sans', sans-serif;
+            transition: background .05s ease;
+            width: 100%;
+        }
+
+        .song-list-item:hover, .song-list-item:focus {
+            border-color: #FFFFFF;
+            outline: none;
+        }
+
+        .language {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 1rem;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.25);
+        }
+
+        .artist {
+            color: #FDFF8D;
+            font-size: 2rem;
+        }
+        
+        .title {
+            display: block;
+            width: 100%;
+            color: #B2FF8D;
+        }
+    </style>
+
+            
+                
+    <a class="song-list-item" href="../song/peter_fox-haus_am_see.html">
+        <div class="language">german</div>
+        <span class="artist">
+            Peter Fox
+        </span>
+        <span class="title">
+            Haus am See
+        </span>
+    </a>
+
+    
+    <style> 
+        .song-list-item {
+            display: block;
+            position: relative;
+            margin: 0 auto 1rem auto;
+            padding: 1rem;
+            background: #27487B;
+            text-decoration: none;
+            color: #FFFFFF;
+            border-radius: 7px;
+            border: 2px solid transparent;
+            text-align: left;
+            font-size: 1.4rem;
+            font-family: 'Fira Sans', sans-serif;
+            transition: background .05s ease;
+            width: 100%;
+        }
+
+        .song-list-item:hover, .song-list-item:focus {
+            border-color: #FFFFFF;
+            outline: none;
+        }
+
+        .language {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 1rem;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.25);
+        }
+
+        .artist {
+            color: #FDFF8D;
+            font-size: 2rem;
+        }
+        
+        .title {
+            display: block;
+            width: 100%;
+            color: #B2FF8D;
+        }
+    </style>
+
+            
+                
+    <a class="song-list-item" href="../song/takagi_&_ketrala-luna_e_la_gatta.html">
+        <div class="language">italian</div>
+        <span class="artist">
+            Takagi & Ketrala
+        </span>
+        <span class="title">
+            Luna e la gatta
+        </span>
+    </a>
+
+    
+    <style> 
+        .song-list-item {
+            display: block;
+            position: relative;
+            margin: 0 auto 1rem auto;
+            padding: 1rem;
+            background: #27487B;
+            text-decoration: none;
+            color: #FFFFFF;
+            border-radius: 7px;
+            border: 2px solid transparent;
+            text-align: left;
+            font-size: 1.4rem;
+            font-family: 'Fira Sans', sans-serif;
+            transition: background .05s ease;
+            width: 100%;
+        }
+
+        .song-list-item:hover, .song-list-item:focus {
+            border-color: #FFFFFF;
+            outline: none;
+        }
+
+        .language {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 1rem;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.25);
+        }
+
+        .artist {
+            color: #FDFF8D;
+            font-size: 2rem;
+        }
+        
+        .title {
+            display: block;
+            width: 100%;
+            color: #B2FF8D;
+        }
+    </style>
+
+            
+                
+    <a class="song-list-item" href="../song/tomte-ich_sang_die_ganze_zeit_von_dir.html">
+        <div class="language">german</div>
+        <span class="artist">
+            Tomte
+        </span>
+        <span class="title">
+            Ich sang die ganze Zeit von dir
+        </span>
+    </a>
+
+    
+    <style> 
+        .song-list-item {
+            display: block;
+            position: relative;
+            margin: 0 auto 1rem auto;
+            padding: 1rem;
+            background: #27487B;
+            text-decoration: none;
+            color: #FFFFFF;
+            border-radius: 7px;
+            border: 2px solid transparent;
+            text-align: left;
+            font-size: 1.4rem;
+            font-family: 'Fira Sans', sans-serif;
+            transition: background .05s ease;
+            width: 100%;
+        }
+
+        .song-list-item:hover, .song-list-item:focus {
+            border-color: #FFFFFF;
+            outline: none;
+        }
+
+        .language {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 1rem;
+            font-size: 1rem;
+            color: rgba(255, 255, 255, 0.25);
+        }
+
+        .artist {
+            color: #FDFF8D;
+            font-size: 2rem;
+        }
+        
+        .title {
+            display: block;
+            width: 100%;
+            color: #B2FF8D;
+        }
+    </style>
+
+            
+        </div>
+
+        <style>
+             .song-list {
+                 
+    margin: 0 auto;
+    width: auto;
+    max-width: 460px;
+    padding: 16px;
+
+             }
+        </style>
+    </body>
+</html>
