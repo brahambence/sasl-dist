@@ -412,6 +412,11 @@ h2 {
             color: rgba(255, 255, 255, 0.25);
             transition: 0.4s 
         }
+        @media only screen and (max-width: 480px) {
+            .phrase-translation {
+                font-size: 1.6rem;
+            }
+        }
 
         .phrase-container.active {
             background: #27487B;
@@ -1289,11 +1294,8 @@ h2 {
             container.classList.remove("active");
         });
         if (current_phrase_number >= 0 && current_phrase_number < phrase_containers.length) {
-            window.scrollTo({
-                left: 0,
-                top: phrase_container_positions[phrase_number] - viewport_height / 2,
-                behavior: instant ? 'auto' : 'smooth',
-            });
+            
+            window.scroll(0, phrase_container_positions[phrase_number] - viewport_height / 2)
             phrase_containers[phrase_number].classList.add('active');
         }
     }
