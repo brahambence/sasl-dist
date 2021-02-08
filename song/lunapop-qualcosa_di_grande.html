@@ -18,8 +18,12 @@
         <style>
             
 
-body {
+
+html {
     font-size: 16px;
+}
+
+body {
     margin: 0;
     margin-top: 9.4rem;
     background: #3A5C90;
@@ -51,6 +55,13 @@ h2 {
 .icon svg {
   height: 1em;
   width: 1em;
+}
+
+@media only screen and (max-width: 480px) {
+    html {
+        font-size: 12px;
+        color: purple;
+    }
 }
         </style>
         
@@ -135,13 +146,19 @@ h2 {
     margin: 0 auto;
     width: auto;
     max-width: 460px;
-    padding: 16px;
+    padding: 1rem;
 
         background: #3A5C90;
         
         
             height: 80px;
         
+    }
+
+    @media only screen and (max-width: 480px) {
+        #header-logo {
+            height: 60px;
+        }
     }
     </style>
 
@@ -306,7 +323,9 @@ h2 {
     margin: 0 auto;
     width: auto;
     max-width: 460px;
-    padding: 16px;
+    padding: 1rem;
+
+            width: calc(100% - 5rem);
 
             display: block;
             position: relative;
@@ -370,7 +389,9 @@ h2 {
     margin: 0 auto;
     width: auto;
     max-width: 460px;
-    padding: 16px;
+    padding: 1rem;
+
+            width: calc(100% - 3rem);
 
             color: #FFFFFF;
             font-family: 'Fira Sans', sans-serif;
