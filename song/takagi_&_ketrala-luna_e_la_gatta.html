@@ -9,9 +9,10 @@
 
 
 
+
 <html>
     <head>
-        <title></title>
+        <title>sasl: Luna e la gatta</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <style>
@@ -22,6 +23,13 @@ body {
     margin: 0;
     margin-top: 9.4rem;
     background: #3A5C90;
+}
+
+h1 {
+    font-family: 'Capriola', sans-serif;
+    color: #FFFFFF;
+    font-weight: normal;
+    text-align: center;
 }
 
 h2 {
@@ -38,6 +46,11 @@ h2 {
 
 .top-heading {
     margin-top: 0;
+}
+
+.icon svg {
+  height: 1em;
+  width: 1em;
 }
         </style>
         
@@ -172,13 +185,185 @@ h2 {
 
 
 
+        
+    <div id="song-title-card">
+        <span class="artist">
+            Takagi & Ketrala
+        </span>
+        <span class="title">
+            Luna e la gatta
+        </span>
+        <div id="song-title-card-play-button">
+            
+    <a 
+        
+            onClick="handle_start_song_click()"
+        
+
+        class="
+            button 
+            
+        " 
+
+        
+    >
+        
+            <span class="button-label">
+                Start
+            </span>
+        
+
+        
+    </a>
+
+    
+    <style>
+        
+        .button {
+            display: flex;
+            width: 100%;
+            height: 0;
+
+            
+            
+            padding-bottom: calc(50% - 5px);
+            padding-top: calc(50% - 5px);
+            box-sizing: border-box;
+            border-radius: 50%;
+            border: 5px solid #FDFF8D;
+
+            margin: 0 auto 2rem auto;
+            background: #27487B;
+            position: relative;
+            
+            text-decoration: none;
+
+            color: #FDFF8D;
+            font-size: 2.8rem;
+            font-family: 'Capriola', sans-serif;
+
+            transition: background .05s ease;
+
+            cursor: pointer;
+        }
+        .button:hover {
+            background: rgba(255, 255, 255, 0.25);
+            color: #FFFFFF;
+            border-color: #FFFFFF;
+            transition: background .2s ease;
+        }
+
+        .button:focus {
+            outline: none;
+            border-color: white;
+        }
+        
+        .dim .button {
+            border-color: #3A5C90;
+            color: #3A5C90;
+        }
+        .dim .button:hover {
+            border-color: #FDFF8D;
+            color: #FDFF8D;
+            transition: all .05s ease;
+            outline: none;
+        }
+
+
+        .button-label {
+            display: block;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            text-align: center;
+            margin: auto;
+        }
+    </style>
+
+        </div>
+    </div>
+
+    <script>
+            function handle_start_song_click() {
+                window.scrollTo({
+                    left: 0,
+                    top: phrase_container_positions[0] - viewport_height / 2,
+                    behavior: 'smooth',
+                });
+                // TODO: Detect if player is ready instead of waiting 1500ms before playing
+                setTimeout(() =>{
+                    start_song();
+                }, 1000)
+            }
+        </script>
+
+    
+    <style> 
+        #song-title-card {
+            
+    margin: 0 auto;
+    width: auto;
+    max-width: 460px;
+    padding: 16px;
+
+            display: block;
+            position: relative;
+            text-decoration: none;
+            color: #FFFFFF;
+            border-radius: 7px;
+            text-align: center;
+            font-size: 1.4rem;
+            font-family: 'Fira Sans', sans-serif;
+            transition: background .05s ease;
+            background: #27487B;
+        }
+
+        .song-list-item:hover, .song-list-item:focus {
+            border-color: #FFFFFF;
+            outline: none;
+        }
+
+        .artist {
+            color: #FFFFFF;
+            font-size: 2rem;
+        }
+        
+        .title {
+            display: block;
+            width: 100%;
+            color: #FFFFFF;
+        }
+
+        #song-title-card-play-button {
+            width: 80%;
+            max-width: 400 px;
+            margin: 2rem auto;
+        }
+    </style>
+
+
+        <style>
+            #phrases-wrapper {
+                margin-top: 50vh;
+            }
+        </style>
+
+        <div id="phrases-wrapper">
             <style>
                 #phrases-wrapper {
-                    margin-top: 50vh;
+                    display: block;
+                    opacity: 1;
+                    transition: 1s all ease;
+                }
+                #phrases-wrapper.hidden {
+                    display: initial;
+                    opacity: 0;
                 }
             </style>
-            <div id="phrases-wrapper">
-                
+            
+            
     <style>
         .phrase-container {
             
@@ -194,21 +379,33 @@ h2 {
             position: relative;
             margin-bottom: 1rem;
         }
-        .phrase-container.active {
-            background: #27487B;
-            border-radius: 0.5rem;
-            transition: 1s ease all;
+
+        .phrase-original {
+            border-bottom: 2px dotted #ffffff57;
+            padding-bottom: 0.5rem;
         }
 
         .phrase-translation {
             font-size: 1rem;
-            margin-left: 6px;
-            margin-top: 0.5rem;
+            margin-left: 1rem;
+            color: rgba(255, 255, 255, 0.25);
+            transition: 0.4s 
+        }
+
+        .phrase-container.active {
+            background: #27487B;
+            border-radius: 0.5rem;
+            transition: color 0.05s ease;
+        }
+
+        .phrase-container.active .phrase-translation {
+            color: #FDFF8D;
         }
     </style>
 
+
+            
                 
-                    
     <div id="phrase-number-0" class="phrase-container">
         <div class="phrase-original">
             Gli alberi pescano, pescano
@@ -218,8 +415,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-1" class="phrase-container">
         <div class="phrase-original">
             L'anima di questo mondo
@@ -229,8 +426,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-2" class="phrase-container">
         <div class="phrase-original">
             Immergendo le radici
@@ -240,8 +437,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-3" class="phrase-container">
         <div class="phrase-original">
             E abbracciando l'equatore
@@ -251,8 +448,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-4" class="phrase-container">
         <div class="phrase-original">
             Vorrei tu facessi lo stesso
@@ -262,8 +459,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-5" class="phrase-container">
         <div class="phrase-original">
             Con la mano sul mio cuore
@@ -273,8 +470,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-6" class="phrase-container">
         <div class="phrase-original">
             Quando mi guardi negli occhi
@@ -284,8 +481,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-7" class="phrase-container">
         <div class="phrase-original">
             Vorrei finire nel frullatore
@@ -295,8 +492,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-8" class="phrase-container">
         <div class="phrase-original">
             Ma dimmi come si può stare bene
@@ -306,8 +503,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-9" class="phrase-container">
         <div class="phrase-original">
             Anche quando si è lontani
@@ -317,8 +514,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-10" class="phrase-container">
         <div class="phrase-original">
             E non sento la tua voce
@@ -328,8 +525,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-11" class="phrase-container">
         <div class="phrase-original">
             Ormai da troppe settimane
@@ -339,8 +536,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-12" class="phrase-container">
         <div class="phrase-original">
             Dimmi come si può stare vivi
@@ -350,8 +547,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-13" class="phrase-container">
         <div class="phrase-original">
             Anche senza respirare
@@ -361,8 +558,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-14" class="phrase-container">
         <div class="phrase-original">
             Posso soltanto deglutire
@@ -372,8 +569,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-15" class="phrase-container">
         <div class="phrase-original">
             singhiozzare
@@ -383,8 +580,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-16" class="phrase-container">
         <div class="phrase-original">
             Cantare nella testa
@@ -394,8 +591,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-17" class="phrase-container">
         <div class="phrase-original">
             Questo motivo che mi fa
@@ -405,8 +602,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-18" class="phrase-container">
         <div class="phrase-original">
             Stare come una gatta
@@ -416,8 +613,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-19" class="phrase-container">
         <div class="phrase-original">
             Che guarda dalla finestra (In un vaso)
@@ -427,8 +624,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-20" class="phrase-container">
         <div class="phrase-original">
             La luna che cade
@@ -438,8 +635,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-21" class="phrase-container">
         <div class="phrase-original">
             in un lago dipinto di blu
@@ -449,8 +646,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-22" class="phrase-container">
         <div class="phrase-original">
             E ci caschi anche tu
@@ -460,8 +657,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-23" class="phrase-container">
         <div class="phrase-original">
             Nel cielo la notte è romantica
@@ -471,8 +668,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-24" class="phrase-container">
         <div class="phrase-original">
             Venere bacia Orione
@@ -482,8 +679,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-25" class="phrase-container">
         <div class="phrase-original">
             Senza sapere dove
@@ -493,8 +690,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-26" class="phrase-container">
         <div class="phrase-original">
             Senza sapere come
@@ -504,8 +701,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-27" class="phrase-container">
         <div class="phrase-original">
             Vorrei tu facessi lo stesso
@@ -515,8 +712,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-28" class="phrase-container">
         <div class="phrase-original">
             Chiamandomi col mio nome
@@ -526,8 +723,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-29" class="phrase-container">
         <div class="phrase-original">
             L'amore attraversa lo spazio
@@ -537,8 +734,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-30" class="phrase-container">
         <div class="phrase-original">
             I chilometri, gli anni luce
@@ -548,8 +745,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-31" class="phrase-container">
         <div class="phrase-original">
             Ma dimmi come si può stare bene
@@ -559,8 +756,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-32" class="phrase-container">
         <div class="phrase-original">
             Anche quando si è lontani
@@ -570,8 +767,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-33" class="phrase-container">
         <div class="phrase-original">
             E non sento la tua voce
@@ -581,8 +778,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-34" class="phrase-container">
         <div class="phrase-original">
             Ormai da troppe settimane
@@ -592,8 +789,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-35" class="phrase-container">
         <div class="phrase-original">
             Dimmi come si può stare vivi
@@ -603,8 +800,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-36" class="phrase-container">
         <div class="phrase-original">
             Anche senza respirare
@@ -614,8 +811,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-37" class="phrase-container">
         <div class="phrase-original">
             Posso soltanto deglutire, singhiozzare
@@ -625,8 +822,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-38" class="phrase-container">
         <div class="phrase-original">
             Cantare nella testa
@@ -636,8 +833,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-39" class="phrase-container">
         <div class="phrase-original">
             Questo motivo che mi fa
@@ -647,8 +844,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-40" class="phrase-container">
         <div class="phrase-original">
             Stare come una gatta
@@ -658,8 +855,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-41" class="phrase-container">
         <div class="phrase-original">
             Che guarda dalla finestra (In un vaso)
@@ -669,8 +866,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-42" class="phrase-container">
         <div class="phrase-original">
             La luna che cade in un lago dipinto di blu
@@ -680,8 +877,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-43" class="phrase-container">
         <div class="phrase-original">
             E ci caschi anche tu
@@ -691,8 +888,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-44" class="phrase-container">
         <div class="phrase-original">
             Amore, non è una scusa
@@ -702,8 +899,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-45" class="phrase-container">
         <div class="phrase-original">
             Ma, giuro, mi sono perso
@@ -713,8 +910,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-46" class="phrase-container">
         <div class="phrase-original">
             Non è stata una bella avventura
@@ -724,8 +921,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-47" class="phrase-container">
         <div class="phrase-original">
             Però mi è piaciuta lo stesso
@@ -735,8 +932,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-48" class="phrase-container">
         <div class="phrase-original">
             C'era la luna in un lago
@@ -746,8 +943,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-49" class="phrase-container">
         <div class="phrase-original">
             Che emanava il suo riflesso
@@ -757,8 +954,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-50" class="phrase-container">
         <div class="phrase-original">
             E una banda suonava lontano una musica blues
@@ -768,8 +965,8 @@ h2 {
         </div>
     </div>
 
+            
                 
-                    
     <div id="phrase-number-51" class="phrase-container">
         <div class="phrase-original">
             Ci saresti cascata anche tu
@@ -779,20 +976,45 @@ h2 {
         </div>
     </div>
 
-                
-            </div>
+            
+        </div>
+
         <div id="song-controls-wrapper">
             
     <div id="song-controls-grid">
         <div class="song-controls-button-wrapper dim" onClick="rewind()">
             
     <a 
-        class="button" 
+        
+
+        class="
+            button 
+            
+                icon
+            
+        " 
+
         
     >
-        <span class="button-label">
-            <<
-        </span>
+        
+
+        
+            
+    <svg viewBox="0 0 24 24" width="80" height="80" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="rewind-icon"><polygon points="11 19 2 12 11 5 11 19"></polygon><polygon points="22 19 13 12 22 5 22 19"></polygon></svg>
+    <style>
+        .rewind-icon {
+            transform: translateX(-5px);
+        }
+    </style>
+
+            <style>
+                .button svg {
+                    position: relative;
+                    top: -1.35rem;
+                    left: 1.2rem;
+                }
+            </style>
+        
     </a>
 
     
@@ -866,12 +1088,31 @@ h2 {
         <div class="song-controls-button-wrapper dim" onClick="jump_forward()">
             
     <a 
-        class="button" 
+        
+
+        class="
+            button 
+            
+                icon
+            
+        " 
+
         
     >
-        <span class="button-label">
-            >>
-        </span>
+        
+
+        
+            
+    <svg viewBox="0 0 24 24" width="80" height="80" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="fast-forward-icon"><polygon points="13 19 22 12 13 5 13 19"></polygon><polygon points="2 19 11 12 2 5 2 19"></polygon></svg>
+
+            <style>
+                .button svg {
+                    position: relative;
+                    top: -1.35rem;
+                    left: 1.2rem;
+                }
+            </style>
+        
     </a>
 
     
@@ -945,12 +1186,31 @@ h2 {
         <div id="pause_button" class="song-controls-button-wrapper dim hidden" onClick="pause()">
             
     <a 
-        class="button" 
+        
+
+        class="
+            button 
+            
+                icon
+            
+        " 
+
         
     >
-        <span class="button-label">
-            II
-        </span>
+        
+
+        
+            
+    <svg viewBox="0 0 24 24" width="80" height="80" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="puase-icon"><line x1="6" x2="6" y1="20" y2="4"></line><line x1="14" x2="14" y1="20" y2="4"></line></svg>
+
+            <style>
+                .button svg {
+                    position: relative;
+                    top: -1.35rem;
+                    left: 1.2rem;
+                }
+            </style>
+        
     </a>
 
     
@@ -1023,12 +1283,31 @@ h2 {
         <div id="play_button" class="song-controls-button-wrapper dim" onClick="play()">
             
     <a 
-        class="button" 
+        
+
+        class="
+            button 
+            
+                icon
+            
+        " 
+
         
     >
-        <span class="button-label">
-            >
-        </span>
+        
+
+        
+            
+    <svg viewBox="0 0 24 24" width="80" height="80" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="play-icon"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+
+            <style>
+                .button svg {
+                    position: relative;
+                    top: -1.35rem;
+                    left: 1.2rem;
+                }
+            </style>
+        
     </a>
 
     
@@ -1188,6 +1467,10 @@ h2 {
             youtube_player.playVideo();
             toggle_play_pause_buttons("pause");
         }
+        function start_song() {
+            youtube_player.seekTo(0);
+            play();
+        }
         function pause() {
             youtube_player.pauseVideo();
             toggle_play_pause_buttons("pause");
@@ -1222,12 +1505,16 @@ h2 {
     const phrase_containers = document.querySelectorAll('.phrase-container');
     const phrase_container_positions = Array.from(phrase_containers).map(container => container.getBoundingClientRect().top);
 
-    const set_active_phrase = (phrase_number) => {
+    const set_active_phrase = (phrase_number, instant=false) => {
         phrase_containers.forEach(container => {
             container.classList.remove("active");
         });
         if (current_phrase_number >= 0 && current_phrase_number < phrase_containers.length) {
-            window.scrollTo(0, phrase_container_positions[phrase_number] - viewport_height / 2);
+            window.scrollTo({
+                left: 0,
+                top: phrase_container_positions[phrase_number] - viewport_height / 2,
+                behavior: instant ? 'auto' : 'smooth',
+            });
             phrase_containers[phrase_number].classList.add('active');
         }
     }
@@ -1245,6 +1532,7 @@ h2 {
             if (current_time < previous_time || current_time > previous_time + seek_detection_threshold) {
                 for (let i = 0; i < phrase_times.length; i++) {
                     if (current_time < phrase_times[i+1]) {
+                        let previous_phrase_number = current_phrase_number;
                         current_phrase_number = i;
                         set_active_phrase(current_phrase_number);
                         break
@@ -1256,11 +1544,6 @@ h2 {
         phrase_update_interval
     )
 </script>
-<style>
-    html {
-        scroll-behavior: smooth;
-    }
-</style>
 
 
 
@@ -1273,19 +1556,12 @@ h2 {
         first_script_tag.parentNode.insertBefore(tag, first_script_tag);
         let youtube_player;
         function on_player_state_change(event) {
-            console.log({event})
             // YouTube Player API event reference: https://developers.google.com/youtube/iframe_api_reference#Events
             if (event.data === 1 || event.data === 3) {
                 toggle_play_pause_buttons("pause");
             } else if (event.data === -1 || event.data === 0 || event.data === 2 || event.data === 5) {
                 toggle_play_pause_buttons("play");
             }
-        }
-        function on_player_ready(event) {
-            setTimeout(() => {
-           const autoplay_promise = youtube_player.playVideo(); 
-           console.log(autoplay_promise);
-            }, 1000);
         }
         function onYouTubePlayerAPIReady() {
             youtube_player = new YT.Player("youtube-player", {
@@ -1294,7 +1570,6 @@ h2 {
             videoId: 'UOGIB04HfVw',
                 events: {
                 'onStateChange': on_player_state_change,
-                'onReady': on_player_ready,
                 },
             playerVars: {
                 modestbranding: 1, // Remove YouTube logo from controls bar
@@ -1309,7 +1584,7 @@ h2 {
         #youtube-player {
             position: fixed;
             right: 0;
-            bottom: 200px;
+            bottom: 0.5rem;
         }
     </style>
     <div id="youtube-player"></div>
