@@ -8,8 +8,6 @@
 
 
 
-
-
 <html>
     <head>
         <title>sasl: Luna e la gatta</title>
@@ -26,7 +24,7 @@ html {
 body {
     margin: 0;
     margin-top: 9.4rem;
-    background: #3A5C90;
+    background: black;
 }
 
 h1 {
@@ -163,7 +161,7 @@ h2 {
     max-width: 460px;
     padding: 1rem;
 
-        background: #3A5C90;
+        background: black;
         
         
             height: 80px;
@@ -235,7 +233,7 @@ h2 {
                 z-index: 1;
             }
             #header-background-content {
-                background: #3A5C90;
+                background: black;
             }
         </style>
     
@@ -260,13 +258,19 @@ h2 {
         class="
             button 
             
+            
+                dim
+            
+            
+                disabled
+            
         " 
 
         
     >
         
             <span class="button-label">
-                Start
+                Loading<br>song...
             </span>
         
 
@@ -304,6 +308,10 @@ h2 {
             cursor: pointer;
         }
 
+        .button.disabled {
+            pointer-events: none;
+        }
+
         @media (any-hover: hover) {
             .button:hover {
                 background: rgba(255, 255, 255, 0.25);
@@ -322,19 +330,18 @@ h2 {
             transition: background .2s ease;
         }
         
-        .dim .button {
-            border-color: #3A5C90;
-            color: #3A5C90;
+        .dim.button, .dim .button {
+            border-color: black;
+            color: black;
         }
         @media (any-hover: hover) {
-            .dim .button:hover {
+            .dim.button:hover, .dim .button:hover {
                 border-color: #FDFF8D;
                 color: #FDFF8D;
                 transition: all .05s ease;
                 outline: none;
             }
         }
-
 
         .button-label {
             display: block;
@@ -352,24 +359,32 @@ h2 {
     </div>
 
     <script>
-        
-        function onPlayerReady(event) {
-            console.log({event})
-            console.log("Player ready event fired.")
-            
-            
-            
+        const start_button = document.querySelector('#song-title-card-play-button .button');
+        const start_button_label = start_button.querySelector('.button-label');
+        const polling_youtube_player_state = setInterval( () => {
+            if (is_youtube_player_ready()) {
+                clearInterval(polling_youtube_player_state);
+                start_button.classList.remove('disabled');
+                start_button.classList.remove('dim');
+                start_button_label.innerText = 'Start';
+            }
+        }, 200)
+        function is_youtube_player_ready() {
+            if (typeof youtube_player !== "undefined" && typeof youtube_player.getPlayerState !== "undefined") {
+                return youtube_player.getPlayerState() === 5
+            }  
         }
+
         function handle_start_song_click() {
+            youtube_player.seekTo(0);
+            youtube_player.playVideo();
+            toggle_play_pause_buttons("pause");
             window.scrollTo({
                 left: 0,
                 top: phrase_container_positions[0] - viewport_height / 2,
                 behavior: 'smooth',
             });
-            // TODO: Detect if player is ready instead of waiting 1500ms before playing
-            setTimeout(() =>{
-                start_song();
-            }, 1000)
+            
         }
     </script>
 
@@ -1083,6 +1098,8 @@ h2 {
             
                 icon
             
+            
+            
         " 
 
         
@@ -1150,6 +1167,10 @@ h2 {
             cursor: pointer;
         }
 
+        .button.disabled {
+            pointer-events: none;
+        }
+
         @media (any-hover: hover) {
             .button:hover {
                 background: rgba(255, 255, 255, 0.25);
@@ -1168,19 +1189,18 @@ h2 {
             transition: background .2s ease;
         }
         
-        .dim .button {
-            border-color: #3A5C90;
-            color: #3A5C90;
+        .dim.button, .dim .button {
+            border-color: black;
+            color: black;
         }
         @media (any-hover: hover) {
-            .dim .button:hover {
+            .dim.button:hover, .dim .button:hover {
                 border-color: #FDFF8D;
                 color: #FDFF8D;
                 transition: all .05s ease;
                 outline: none;
             }
         }
-
 
         .button-label {
             display: block;
@@ -1205,6 +1225,8 @@ h2 {
             button 
             
                 icon
+            
+            
             
         " 
 
@@ -1268,6 +1290,10 @@ h2 {
             cursor: pointer;
         }
 
+        .button.disabled {
+            pointer-events: none;
+        }
+
         @media (any-hover: hover) {
             .button:hover {
                 background: rgba(255, 255, 255, 0.25);
@@ -1286,19 +1312,18 @@ h2 {
             transition: background .2s ease;
         }
         
-        .dim .button {
-            border-color: #3A5C90;
-            color: #3A5C90;
+        .dim.button, .dim .button {
+            border-color: black;
+            color: black;
         }
         @media (any-hover: hover) {
-            .dim .button:hover {
+            .dim.button:hover, .dim .button:hover {
                 border-color: #FDFF8D;
                 color: #FDFF8D;
                 transition: all .05s ease;
                 outline: none;
             }
         }
-
 
         .button-label {
             display: block;
@@ -1323,6 +1348,8 @@ h2 {
             button 
             
                 icon
+            
+            
             
         " 
 
@@ -1386,6 +1413,10 @@ h2 {
             cursor: pointer;
         }
 
+        .button.disabled {
+            pointer-events: none;
+        }
+
         @media (any-hover: hover) {
             .button:hover {
                 background: rgba(255, 255, 255, 0.25);
@@ -1404,19 +1435,18 @@ h2 {
             transition: background .2s ease;
         }
         
-        .dim .button {
-            border-color: #3A5C90;
-            color: #3A5C90;
+        .dim.button, .dim .button {
+            border-color: black;
+            color: black;
         }
         @media (any-hover: hover) {
-            .dim .button:hover {
+            .dim.button:hover, .dim .button:hover {
                 border-color: #FDFF8D;
                 color: #FDFF8D;
                 transition: all .05s ease;
                 outline: none;
             }
         }
-
 
         .button-label {
             display: block;
@@ -1440,6 +1470,8 @@ h2 {
             button 
             
                 icon
+            
+            
             
         " 
 
@@ -1503,6 +1535,10 @@ h2 {
             cursor: pointer;
         }
 
+        .button.disabled {
+            pointer-events: none;
+        }
+
         @media (any-hover: hover) {
             .button:hover {
                 background: rgba(255, 255, 255, 0.25);
@@ -1521,19 +1557,18 @@ h2 {
             transition: background .2s ease;
         }
         
-        .dim .button {
-            border-color: #3A5C90;
-            color: #3A5C90;
+        .dim.button, .dim .button {
+            border-color: black;
+            color: black;
         }
         @media (any-hover: hover) {
-            .dim .button:hover {
+            .dim.button:hover, .dim .button:hover {
                 border-color: #FDFF8D;
                 color: #FDFF8D;
                 transition: all .05s ease;
                 outline: none;
             }
         }
-
 
         .button-label {
             display: block;
@@ -1576,33 +1611,33 @@ h2 {
 
     <script>
     window.addEventListener('load',
-    function () {
-        const song_controls = document.querySelectorAll('.song-controls-button-wrapper');
+        function () {
+            const song_controls = document.querySelectorAll('.song-controls-button-wrapper');
 
-        function dim_song_controls(should_dim) {
-            if (should_dim === true) {
-                song_controls.forEach(control => {
-                    control.classList.add('dim');
-                });
-            } else if (should_dim === false) {
-                song_controls.forEach(control => {
-                    control.classList.remove('dim');
-                });
+            function dim_song_controls(should_dim) {
+                if (should_dim === true) {
+                    song_controls.forEach(control => {
+                        control.classList.add('dim');
+                    });
+                } else if (should_dim === false) {
+                    song_controls.forEach(control => {
+                        control.classList.remove('dim');
+                    });
+                }
             }
-        }
 
-        youtube_player.addEventListener('onStateChange', (event) => {
-            if (!event.data) return;
-        
-            if (event.data == YT.PlayerState.PLAYING || event.data == YT.PlayerState.BUFFERING) {
-                dim_song_controls(true);
-                return
-            }
-            if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED || YT.PlayerState.CUED) {
-                dim_song_controls(false);
-                return
-            }
-        })
+            youtube_player.addEventListener('onStateChange', (event) => {
+                if (!event.data) return;
+            
+                if (event.data == YT.PlayerState.PLAYING) {
+                    dim_song_controls(true);
+                    return
+                }
+                if (event.data == YT.PlayerState.PAUSED || event.data == YT.PlayerState.ENDED || YT.PlayerState.CUED || event.data == YT.PlayerState.BUFFERING) {
+                    dim_song_controls(false);
+                    return
+                }
+            })
     });
     </script>
 
@@ -1640,7 +1675,8 @@ h2 {
         }
         function start_song() {
             youtube_player.seekTo(0);
-            play();
+            youtube_player.playVideo();
+            toggle_play_pause_buttons("pause");
         }
         function pause() {
             youtube_player.pauseVideo();
