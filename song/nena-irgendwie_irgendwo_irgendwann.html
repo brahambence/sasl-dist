@@ -1209,9 +1209,10 @@ h2 {
                 toggle_play_pause_buttons("play");
             }
         }
-        function onYouTubePlayerAPIReady() {
+        let should_display_video_controls = screen.width < 480 ? 0 : 1;
+        function onYouTubeIframeAPIReady() {
             youtube_player = new YT.Player("youtube-player", {
-            height: '100',
+            height: '200',
             width: '200',
             videoId: 'oas5nAlfrwg',
                 events: {
@@ -1222,6 +1223,7 @@ h2 {
                 iv_load_policy: 3,
                 playsinline: 1,
                 fs: 0, // Hide annotations
+                controls: should_display_video_controls,
             }
         });
         }
