@@ -352,18 +352,26 @@ h2 {
     </div>
 
     <script>
-            function handle_start_song_click() {
-                window.scrollTo({
-                    left: 0,
-                    top: phrase_container_positions[0] - viewport_height / 2,
-                    behavior: 'smooth',
-                });
-                // TODO: Detect if player is ready instead of waiting 1500ms before playing
-                setTimeout(() =>{
-                    start_song();
-                }, 1000)
-            }
-        </script>
+        
+        function onPlayerReady(event) {
+            console.log({event})
+            console.log("Player ready event fired.")
+            
+            
+            
+        }
+        function handle_start_song_click() {
+            window.scrollTo({
+                left: 0,
+                top: phrase_container_positions[0] - viewport_height / 2,
+                behavior: 'smooth',
+            });
+            // TODO: Detect if player is ready instead of waiting 1500ms before playing
+            setTimeout(() =>{
+                start_song();
+            }, 1000)
+        }
+    </script>
 
     
     <style> 
@@ -1729,7 +1737,7 @@ h2 {
         let should_display_video_controls = screen.width < 480 ? 0 : 1;
         function onYouTubeIframeAPIReady() {
             youtube_player = new YT.Player("youtube-player", {
-            height: '200',
+            height: '100',
             width: '200',
             videoId: 'UOGIB04HfVw',
                 events: {
@@ -1757,7 +1765,7 @@ h2 {
 
          @media only screen and (max-width: 480px) {
          #youtube-player {
-                max-height: 200px;
+                max-height: 73px;
             }
         }
 
