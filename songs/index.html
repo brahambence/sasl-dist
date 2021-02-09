@@ -109,6 +109,12 @@ h2 {
             color: rgba(255, 255, 255, 0.25);
         }
 
+        @media only screen and (max-width: 480px) {
+            .back-label {
+                display: none;
+            }
+        }
+
         .back:hover .back-label {
             transition: background .2s ease;
             opacity: 1;
@@ -157,9 +163,12 @@ h2 {
         
     }
 
+    
+
     @media only screen and (max-width: 480px) {
         #header-logo {
             height: 60px;
+            
         }
     }
     </style>

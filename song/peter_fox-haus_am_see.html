@@ -118,6 +118,12 @@ h2 {
             color: rgba(255, 255, 255, 0.25);
         }
 
+        @media only screen and (max-width: 480px) {
+            .back-label {
+                display: none;
+            }
+        }
+
         .back:hover .back-label {
             transition: background .2s ease;
             opacity: 1;
@@ -166,9 +172,22 @@ h2 {
         
     }
 
+    
+        @media only screen and (max-width: 600px) and (min-width: 480px) {
+            #header-logo {
+                margin-right: 140px;
+            }
+        }
+    
+
     @media only screen and (max-width: 480px) {
         #header-logo {
             height: 60px;
+            
+                text-align: left;
+                max-width: 80px;
+                margin-left: 62px;
+            
         }
     }
     </style>
@@ -995,6 +1014,12 @@ h2 {
                     top: -1.35rem;
                     left: 1.2rem;
                 }
+
+                @media only screen and (max-width: 480px) {
+                    .button svg {
+                        left: 2rem;
+                    }
+                }
             </style>
         
     </a>
@@ -1092,6 +1117,12 @@ h2 {
                     position: relative;
                     top: -1.35rem;
                     left: 1.2rem;
+                }
+
+                @media only screen and (max-width: 480px) {
+                    .button svg {
+                        left: 2rem;
+                    }
                 }
             </style>
         
@@ -1191,6 +1222,12 @@ h2 {
                     top: -1.35rem;
                     left: 1.2rem;
                 }
+
+                @media only screen and (max-width: 480px) {
+                    .button svg {
+                        left: 2rem;
+                    }
+                }
             </style>
         
     </a>
@@ -1287,6 +1324,12 @@ h2 {
                     position: relative;
                     top: -1.35rem;
                     left: 1.2rem;
+                }
+
+                @media only screen and (max-width: 480px) {
+                    .button svg {
+                        left: 2rem;
+                    }
                 }
             </style>
         
@@ -1570,6 +1613,12 @@ h2 {
             z-index: 3;
             border-radius: 7px;
             opacity: 0.2;
+        }
+
+         @media only screen and (max-width: 480px) {
+         #youtube-player {
+                max-height: 73px;
+            }
         }
 
         #youtube-player:hover {
