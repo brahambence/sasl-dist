@@ -1831,7 +1831,7 @@ h2 {
     
     setInterval(
         () => {
-            if (!youtube_player || !youtube_player.getCurrentTime) return;
+            if (!youtube_player || !youtube_player.getCurrentTime || !is_song_playing) return;
             const current_time = youtube_player.getCurrentTime()
 
             if (current_time >= phrase_times[current_phrase_number + 1]) {
