@@ -1583,10 +1583,11 @@ h2 {
             }
         }
         function jump_forward() {
-            if (current_phrase_number < phrase_times.length - 1)
-            current_phrase_number++;
-            youtube_player.seekTo(phrase_times[current_phrase_number]);
-            set_active_phrase(current_phrase_number);
+            if (current_phrase_number < phrase_times.length - 1) {
+                current_phrase_number++;
+                youtube_player.seekTo(phrase_times[current_phrase_number]);
+                set_active_phrase(current_phrase_number);
+            }
         }
         const pause_button = document.getElementById("pause_button");
         const play_button = document.getElementById("play_button");
