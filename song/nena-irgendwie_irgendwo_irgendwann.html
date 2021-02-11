@@ -1369,14 +1369,19 @@ h2 {
     setInterval(
         () => {
             if (!youtube_player || !youtube_player.getCurrentTime || !is_song_playing) return;
+            console.log("updating phrase, before update current phrase number: " + current_phrase_number)
             const current_time = youtube_player.getCurrentTime()
 
             if (current_time >= phrase_times[current_phrase_number + 1]) {
+                console.log("current time matches next phrase number: " + current_phrase_number + 1);
                 current_phrase_number++;
+                console.log("updated current phrase number to: " + current_phrase_number);
                 set_active_phrase(current_phrase_number);
+                console.log("Set active phrase to " + current_phrase_number);
             }
 
             if (current_time < previous_time || current_time > previous_time + seek_detection_threshold) {
+                console.log("current time is less than previous current time.");
                 for (let i = 0; i < phrase_times.length; i++) {
                     if (current_time < phrase_times[i+1]) {
                         let previous_phrase_number = current_phrase_number;
