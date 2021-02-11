@@ -1814,17 +1814,17 @@ h2 {
     const phrase_containers = document.querySelectorAll('.phrase-container');
     const phrase_container_positions = Array.from(phrase_containers).map(container => container.getBoundingClientRect().top);
 
-    const set_active_phrase = (phrase_number, instant=false) => {
+    const set_active_phrase = (instant=false) => {
         phrase_containers.forEach(container => {
             container.classList.remove("active");
         });
         if (current_phrase_number >= 0 && current_phrase_number < phrase_containers.length) {
             window.scrollTo({
                 left: 0,
-                top: phrase_container_positions[phrase_number] - viewport_height / 2,
+                top: phrase_container_positions[current_phrase_number] - viewport_height / 2,
                 behavior: instant ? 'auto' : 'smooth',
             });
-            phrase_containers[phrase_number].classList.add('active');
+            phrase_containers[current_phrase_number].classList.add('active');
         }
     }
     
@@ -1846,7 +1846,6 @@ h2 {
                 console.log("current time is less than previous current time.");
                 for (let i = 0; i < phrase_times.length; i++) {
                     if (current_time < phrase_times[i+1]) {
-                        let previous_phrase_number = current_phrase_number;
                         current_phrase_number = i;
                         set_active_phrase(current_phrase_number);
                         break
