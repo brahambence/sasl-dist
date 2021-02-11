@@ -1374,17 +1374,7 @@ h2 {
                 set_active_phrase(current_phrase_number);
             }
 
-            if (current_time < previous_time || current_time > previous_time + seek_detection_threshold) {
-                for (let i = 0; i < phrase_times.length; i++) {
-                    if (current_time < phrase_times[i+1]) {
-                        let previous_phrase_number = current_phrase_number;
-                        current_phrase_number = i;
-                        set_active_phrase(current_phrase_number);
-                        break
-                    }
-                }
-            }
-            previous_time = current_time
+            
         },
         phrase_update_interval
     )
