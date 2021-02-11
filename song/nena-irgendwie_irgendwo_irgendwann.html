@@ -24,7 +24,7 @@ html {
 body {
     margin: 0;
     margin-top: 9.4rem;
-    background: gray;
+    background: lightgreen;
 }
 
 @media screen and (max-width: 860px)
@@ -184,7 +184,7 @@ h2 {
     max-width: 460px;
     padding: 1rem;
 
-        background: gray;
+        background: lightgreen;
         
         
             height: 80px;
@@ -272,7 +272,7 @@ h2 {
 
             }
             #header-background-content {
-                background: gray;
+                background: lightgreen;
             }
         </style>
     
@@ -379,8 +379,8 @@ h2 {
         }
         
         .dim.button, .dim .button {
-            border-color: gray;
-            color: gray;
+            border-color: lightgreen;
+            color: lightgreen;
         }
         @media (any-hover: hover) {
             .dim.button:hover, .dim .button:hover {
@@ -424,9 +424,9 @@ h2 {
         }
 
         function handle_start_song_click() {
+            start_updating_current_phrase_number();
             youtube_player.seekTo(0);
             youtube_player.playVideo();
-            is_song_playing = true;
             toggle_play_pause_buttons("pause");
             window.scrollTo({
                 left: 0,
@@ -747,8 +747,8 @@ h2 {
         }
         
         .dim.button, .dim .button {
-            border-color: gray;
-            color: gray;
+            border-color: lightgreen;
+            color: lightgreen;
         }
         @media (any-hover: hover) {
             .dim.button:hover, .dim .button:hover {
@@ -886,8 +886,8 @@ h2 {
         }
         
         .dim.button, .dim .button {
-            border-color: gray;
-            color: gray;
+            border-color: lightgreen;
+            color: lightgreen;
         }
         @media (any-hover: hover) {
             .dim.button:hover, .dim .button:hover {
@@ -1025,8 +1025,8 @@ h2 {
         }
         
         .dim.button, .dim .button {
-            border-color: gray;
-            color: gray;
+            border-color: lightgreen;
+            color: lightgreen;
         }
         @media (any-hover: hover) {
             .dim.button:hover, .dim .button:hover {
@@ -1163,8 +1163,8 @@ h2 {
         }
         
         .dim.button, .dim .button {
-            border-color: gray;
-            color: gray;
+            border-color: lightgreen;
+            color: lightgreen;
         }
         @media (any-hover: hover) {
             .dim.button:hover, .dim .button:hover {
@@ -1294,27 +1294,31 @@ h2 {
             if (current_phrase_number === -1) return
             if (current_phrase_number === 0) {youtube_display.seekTo(phrase_times[0]); return }
             if (current_phrase_number > 0) {
-                let should_play_after_rewind = false;
-                if (is_song_playing) {
-                    pause();
-                    should_play_after_rewind = true;
-                }
+                stop_updating_current_phrase_number();
                 current_phrase_number--;
                 set_active_phrase(current_phrase_number);
                 youtube_player.seekTo(phrase_times[current_phrase_number]);
-                if (should_play_after_rewind) {
-                    play();
+                if (youtube_player.getPlayerState === (YT.PlayerState.PLAYING || YT.PlayerState.BUFFERING)) {
+                    start_updating_current_phrase_number();
                 }
             }
         }
         function jump_forward() {
-            if (current_phrase_number < phrase_times.length - 1)
-            current_phrase_number++;
-            youtube_player.seekTo(phrase_times[current_phrase_number]);
-            set_active_phrase(current_phrase_number);
+            if (current_phrase_number >= phrase_times.length) return
+            if (current_phrase_number < phrase_times.length) {
+                stop_updating_current_phrase_number();
+                current_phrase_number++;
+                set_active_phrase(current_phrase_number);
+                youtube_player.seekTo(phrase_times[current_phrase_number]);
+                if (youtube_player.getPlayerState === (YT.PlayerState.PLAYING || YT.PlayerState.BUFFERING)) {
+                    start_updating_current_phrase_number();
+                }
+            }
         }
+
         const pause_button = document.getElementById("pause_button");
         const play_button = document.getElementById("play_button");
+
         function toggle_play_pause_buttons(button_to_show) {
             if (button_to_show == "play") {
                 pause_button.classList.add('hidden');
@@ -1325,15 +1329,16 @@ h2 {
                 pause_button.classList.remove('hidden');
             }
         }
+        
         function play() {
+            start_updating_current_phrase_number();
             youtube_player.playVideo();
-            is_song_playing = true;
             toggle_play_pause_buttons("pause");
         }
         function pause() {
-            is_song_playing = false;
+            stop_updating_current_phrase_number();
             youtube_player.pauseVideo();
-            toggle_play_pause_buttons("pause");
+            toggle_play_pause_buttons("play");
         }
     </script>
 
@@ -1343,11 +1348,11 @@ h2 {
 <script>
     const phrase_times = [5.0, 7.0, 9.0, 11.0, 14.0];
 
-    const phrase_update_interval = 300;
+    const time_between_current_phrase_number_updates = 300;
+    // TODO: Check if var can be replaced with let
     var current_phrase_number = -1;
-    var previous_time;
-    var seek_detection_threshold = 10;
 
+    //TODO: Detect viewport changes and recalculate positions and window.innerHeight
     const viewport_height = window.innerHeight;
     const phrase_containers = document.querySelectorAll('.phrase-container');
     const phrase_container_positions = Array.from(phrase_containers).map(container => container.getBoundingClientRect().top);
@@ -1364,40 +1369,30 @@ h2 {
             });
             phrase_containers[phrase_number].classList.add('active');
         }
-        previous_time = youtube_player.getCurrentTime();
     }
 
-    function update_current_phrase_number_based_on_time() {
-        console.log("set timeout function called.");
-        if (youtube_player && youtube_player.getCurrentTime) {
-            const current_time = youtube_player.getCurrentTime();
-            
-            if (typeof is_song_playing !== "undefined") {
-                if (is_song_playing) {
-
-                    if (current_time >= phrase_times[current_phrase_number + 1]) {
-                        current_phrase_number++;
-                        set_active_phrase(current_phrase_number);
-                    } else if (current_time < previous_time || current_time > previous_time + seek_detection_threshold) {
-                        for (let i = 0; i < phrase_times.length; i++) {
-                            if (current_time < phrase_times[i+1]) {
-                                let previous_phrase_number = current_phrase_number;
-                                current_phrase_number = i;
-                                set_active_phrase(current_phrase_number);
-                                break
-                            }
-                        }
-                    }
-                }
+    const update_current_phrase_number = () => {
+        const current_time = youtube_player.getCurrentTime();
+        for (let i = 0; i < phrase_times.length; i++) {
+            if (current_time < phrase_times[i+1]) {
+                current_phrase_number = i;
+                set_active_phrase(current_phrase_number);
+                break
             }
-            previous_time = current_time;
         }
-        setTimeout(update_current_phrase_number_based_on_time, phrase_update_interval);
     }
-    setTimeout(update_current_phrase_number_based_on_time, phrase_update_interval);
-
-
-    
+    let recurring_update_of_current_phrase_number = null;
+    const start_updating_current_phrase_number = () => {
+        if (recurring_update_of_current_phrase_number !== null) {
+            stop_updating_current_phrase_number();
+        }
+        recurring_update_of_current_phrase_number = setInterval(update_current_phrase_number, time_between_current_phrase_number_updates);
+    }
+    const stop_updating_current_phrase_number = () => {
+        if (recurring_update_of_current_phrase_number === null) return;
+        clearInterval(recurring_update_of_current_phrase_number);
+        recurring_update_of_current_phrase_number = null;
+    }
     
 </script>
 
