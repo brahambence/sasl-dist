@@ -1749,9 +1749,11 @@ h2 {
             if (current_phrase_number === -1) return
             if (current_phrase_number === 0) {youtube_display.seekTo(phrase_times[0]); return }
             if (current_phrase_number > 0) {
+                pause();
                 current_phrase_number--;
-                youtube_player.seekTo(phrase_times[current_phrase_number]);
                 set_active_phrase(current_phrase_number);
+                youtube_player.seekTo(phrase_times[current_phrase_number]);
+                play();
             }
         }
         function jump_forward() {
@@ -1793,7 +1795,7 @@ h2 {
 <script>
     const phrase_times = [37.0, 39.0, 41.0, 43.0, 46.0, 48.0, 50.0, 53.0, 55.0, 59.0, 62.0, 64.0, 66.0, 68.0, 72.0, 75.0, 77.0, 79.0, 82.0, 85.0, 88.0, 89.0, 92.0, 105.0, 105.0, 105.0, 105.0, 105.0, 105.0, 105.0, 105.0, 105.0, 105.0, 105.0, 105.0, 105.0, 105.0, 105.0, 105.0, 105.0, 105.0, 105.0, 105.0, 105.0, 105.0, 105.0, 105.0, 105.0, 105.0, 105.0, 105.0, 105.0];
 
-    const phrase_update_interval = 100;
+    const phrase_update_interval = 300;
     var current_phrase_number = -1;
     var previous_time;
     var seek_detection_threshold = 10;
@@ -1882,7 +1884,7 @@ h2 {
     <style>
         #youtube-player {
             position: fixed;
-            top: 0.6rem;
+            top: 0.4rem;
             right: 0.25rem;
             z-index: 3;
             border-radius: 7px;
