@@ -24,7 +24,7 @@ html {
 body {
     margin: 0;
     margin-top: 9.4rem;
-    background: maroon;
+    background: gray;
 }
 
 @media screen and (max-width: 860px)
@@ -184,7 +184,7 @@ h2 {
     max-width: 460px;
     padding: 1rem;
 
-        background: maroon;
+        background: gray;
         
         
             height: 80px;
@@ -272,7 +272,7 @@ h2 {
 
             }
             #header-background-content {
-                background: maroon;
+                background: gray;
             }
         </style>
     
@@ -379,8 +379,8 @@ h2 {
         }
         
         .dim.button, .dim .button {
-            border-color: maroon;
-            color: maroon;
+            border-color: gray;
+            color: gray;
         }
         @media (any-hover: hover) {
             .dim.button:hover, .dim .button:hover {
@@ -1022,8 +1022,8 @@ h2 {
         }
         
         .dim.button, .dim .button {
-            border-color: maroon;
-            color: maroon;
+            border-color: gray;
+            color: gray;
         }
         @media (any-hover: hover) {
             .dim.button:hover, .dim .button:hover {
@@ -1161,8 +1161,8 @@ h2 {
         }
         
         .dim.button, .dim .button {
-            border-color: maroon;
-            color: maroon;
+            border-color: gray;
+            color: gray;
         }
         @media (any-hover: hover) {
             .dim.button:hover, .dim .button:hover {
@@ -1300,8 +1300,8 @@ h2 {
         }
         
         .dim.button, .dim .button {
-            border-color: maroon;
-            color: maroon;
+            border-color: gray;
+            color: gray;
         }
         @media (any-hover: hover) {
             .dim.button:hover, .dim .button:hover {
@@ -1438,8 +1438,8 @@ h2 {
         }
         
         .dim.button, .dim .button {
-            border-color: maroon;
-            color: maroon;
+            border-color: gray;
+            color: gray;
         }
         @media (any-hover: hover) {
             .dim.button:hover, .dim .button:hover {
@@ -1583,11 +1583,10 @@ h2 {
             }
         }
         function jump_forward() {
-            if (current_phrase_number < phrase_times.length - 1) {
-                current_phrase_number++;
-                youtube_player.seekTo(phrase_times[current_phrase_number]);
-                set_active_phrase(current_phrase_number);
-            }
+            if (current_phrase_number < phrase_times.length - 1)
+            current_phrase_number++;
+            youtube_player.seekTo(phrase_times[current_phrase_number]);
+            set_active_phrase(current_phrase_number);
         }
         const pause_button = document.getElementById("pause_button");
         const play_button = document.getElementById("play_button");
@@ -1642,34 +1641,39 @@ h2 {
         }
         previous_time = youtube_player.getCurrentTime();
     }
-    
-    setInterval(
-        () => {
-            if (!youtube_player || !youtube_player.getCurrentTime) return;
-            
+
+    function update_current_phrase_number_based_on_time() {
+        console.log("set timeout function called.");
+        if (youtube_player && youtube_player.getCurrentTime) {
             const current_time = youtube_player.getCurrentTime();
             
-            if (!is_song_playing) return;
+            if (typeof is_song_playing !== "undefined") {
+                if (is_song_playing) {
 
-            if (current_time >= phrase_times[current_phrase_number + 1]) {
-                current_phrase_number++;
-                set_active_phrase(current_phrase_number);
-            }
-
-            if (current_time < previous_time || current_time > previous_time + seek_detection_threshold) {
-                for (let i = 0; i < phrase_times.length; i++) {
-                    if (current_time < phrase_times[i+1]) {
-                        let previous_phrase_number = current_phrase_number;
-                        current_phrase_number = i;
+                    if (current_time >= phrase_times[current_phrase_number + 1]) {
+                        current_phrase_number++;
                         set_active_phrase(current_phrase_number);
-                        break
+                    } else if (current_time < previous_time || current_time > previous_time + seek_detection_threshold) {
+                        for (let i = 0; i < phrase_times.length; i++) {
+                            if (current_time < phrase_times[i+1]) {
+                                let previous_phrase_number = current_phrase_number;
+                                current_phrase_number = i;
+                                set_active_phrase(current_phrase_number);
+                                break
+                            }
+                        }
                     }
                 }
             }
-            previous_time = current_time
-        },
-        phrase_update_interval
-    )
+            previous_time = current_time;
+        }
+        setTimeout(update_current_phrase_number_based_on_time, phrase_update_interval);
+    }
+    setTimeout(update_current_phrase_number_based_on_time, phrase_update_interval);
+
+
+    
+    
 </script>
 
 
