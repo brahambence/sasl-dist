@@ -1628,16 +1628,14 @@ h2 {
     const phrase_container_positions = Array.from(phrase_containers).map(container => container.getBoundingClientRect().top);
 
     const set_active_phrase = (phrase_number, instant=false) => {
-        phrase_containers.forEach(container => {
-            container.classList.remove("active");
-        });
+        
         if (current_phrase_number >= 0 && current_phrase_number < phrase_containers.length) {
             window.scrollTo({
                 left: 0,
                 top: phrase_container_positions[phrase_number] - viewport_height / 2,
                 behavior: instant ? 'auto' : 'smooth',
             });
-            phrase_containers[phrase_number].classList.add('active');
+            
         }
     }
     
