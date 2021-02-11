@@ -1897,7 +1897,7 @@ h2 {
                 console.log("Set active phrase to " + current_phrase_number);
             }
 
-            if (current_time < previous_time || current_time > previous_time + seek_detection_threshold) {
+            if (current_time < previous_time) {
                 console.log("current time is less than previous current time.");
                 for (let i = 0; i < phrase_times.length; i++) {
                     if (current_time < phrase_times[i+1]) {
