@@ -500,23 +500,12 @@ h2 {
 
     </style>
 
-
-        <style>
-            #phrases-wrapper {
-                margin-top: 50vh;
-            }
-        </style>
-
         <div id="phrases-wrapper">
             <style>
                 #phrases-wrapper {
                     display: block;
-                    opacity: 1;
-                    transition: 1s all ease;
-                }
-                #phrases-wrapper.hidden {
-                    display: initial;
-                    opacity: 0;
+                    margin-top: 50vh;
+                    margin-bottom: 8rem;
                 }
             </style>
             
@@ -1292,15 +1281,13 @@ h2 {
     <script>
         function rewind() {
             if (current_phrase_number === -1) return
-            if (current_phrase_number === 0) {youtube_display.seekTo(phrase_times[0]); return }
+            if (current_phrase_number === 0) { youtube_player.seekTo(phrase_times[0]); return }
             if (current_phrase_number > 0) {
                 stop_updating_current_phrase_number();
                 current_phrase_number--;
                 set_active_phrase(current_phrase_number);
                 youtube_player.seekTo(phrase_times[current_phrase_number]);
-                if (youtube_player.getPlayerState === (YT.PlayerState.PLAYING || YT.PlayerState.BUFFERING)) {
-                    start_updating_current_phrase_number();
-                }
+                start_updating_current_phrase_number();
             }
         }
         function jump_forward() {
@@ -1348,7 +1335,7 @@ h2 {
 <script>
     const phrase_times = [5.0, 7.0, 9.0, 11.0, 14.0];
 
-    const time_between_current_phrase_number_updates = 300;
+    const time_between_current_phrase_number_updates = 100;
     // TODO: Check if var can be replaced with let
     var current_phrase_number = -1;
 
@@ -1374,7 +1361,7 @@ h2 {
     const update_current_phrase_number = () => {
         const current_time = youtube_player.getCurrentTime();
         for (let i = 0; i < phrase_times.length; i++) {
-            if (current_time < phrase_times[i+1]) {
+            if (current_time < phrase_times[i+1] && current_time > phrase_times[i]) {
                 current_phrase_number = i;
                 set_active_phrase(current_phrase_number);
                 break

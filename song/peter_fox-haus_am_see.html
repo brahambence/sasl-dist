@@ -500,23 +500,12 @@ h2 {
 
     </style>
 
-
-        <style>
-            #phrases-wrapper {
-                margin-top: 50vh;
-            }
-        </style>
-
         <div id="phrases-wrapper">
             <style>
                 #phrases-wrapper {
                     display: block;
-                    opacity: 1;
-                    transition: 1s all ease;
-                }
-                #phrases-wrapper.hidden {
-                    display: initial;
-                    opacity: 0;
+                    margin-top: 50vh;
+                    margin-bottom: 8rem;
                 }
             </style>
             
@@ -1754,15 +1743,13 @@ h2 {
     <script>
         function rewind() {
             if (current_phrase_number === -1) return
-            if (current_phrase_number === 0) {youtube_display.seekTo(phrase_times[0]); return }
+            if (current_phrase_number === 0) { youtube_player.seekTo(phrase_times[0]); return }
             if (current_phrase_number > 0) {
                 stop_updating_current_phrase_number();
                 current_phrase_number--;
                 set_active_phrase(current_phrase_number);
                 youtube_player.seekTo(phrase_times[current_phrase_number]);
-                if (youtube_player.getPlayerState === (YT.PlayerState.PLAYING || YT.PlayerState.BUFFERING)) {
-                    start_updating_current_phrase_number();
-                }
+                start_updating_current_phrase_number();
             }
         }
         function jump_forward() {
@@ -1810,7 +1797,7 @@ h2 {
 <script>
     const phrase_times = [5.0, 7.0, 9.0, 8.0, 11.0, 12.0, 14.0, 15.0, 3615.0, 16.0, 18.0, 19.0, 22.0, 25.0, 27.0, 28.0, 30.0, 32.0, 3632.0, 7232.0, 10832.0, 38.0, 40.0, 42.0, 43.0, 45.0, 46.0, 48.0, 51.0, 53.0, 54.0, 56.0, 57.0, 3657.0, 7257.0, 10857.0, 14457.0, 18057.0, 21657.0, 25257.0, 28857.0, 32457.0, 36057.0, 39657.0, 43257.0, 46857.0, 50457.0];
 
-    const time_between_current_phrase_number_updates = 300;
+    const time_between_current_phrase_number_updates = 100;
     // TODO: Check if var can be replaced with let
     var current_phrase_number = -1;
 
@@ -1836,7 +1823,7 @@ h2 {
     const update_current_phrase_number = () => {
         const current_time = youtube_player.getCurrentTime();
         for (let i = 0; i < phrase_times.length; i++) {
-            if (current_time < phrase_times[i+1]) {
+            if (current_time < phrase_times[i+1] && current_time > phrase_times[i]) {
                 current_phrase_number = i;
                 set_active_phrase(current_phrase_number);
                 break
