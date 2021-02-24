@@ -9,13 +9,23 @@
 
 
 
+
+
 <html>
     <head>
         <title>sasl: Ikarosz</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <style>
-            
+        
+
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Capriola&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap" rel="stylesheet"> 
+<style>
+    
 
 
 html {
@@ -76,10 +86,69 @@ h2 {
         font-size: 12px;
     }
 }
-        </style>
-        
-        <link href="https://fonts.googleapis.com/css2?family=Fira+Sans&display=swap" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css2?family=Capriola&display=swap" rel="stylesheet">
+</style>
+<style>
+
+
+html {
+    font-size: 16px;
+}
+
+body {
+    margin: 0;
+    margin-top: 9.4rem;
+    background: #3A5C90;
+}
+
+@media screen and (max-width: 860px)
+    and (max-height: 480px) 
+    and (orientation: landscape) {
+        body {
+            margin-top: 5.4rem;
+        }
+}
+
+h1 {
+    font-family: 'Capriola', sans-serif;
+    color: #FFFFFF;
+    font-weight: normal;
+    text-align: center;
+}
+
+h2 {
+    font-family: 'Capriola', sans-serif;
+    color: #FFFFFF;
+    font-weight: normal;
+    text-align: center;
+}
+
+.hidden {
+    display: none;
+}
+
+
+.top-heading {
+    margin-top: 0;
+}
+@media screen and (max-width: 860px)
+    and (max-height: 480px) 
+    and (orientation: landscape) {
+        .top-heading{
+            margin-top: 7rem;
+        }
+}
+
+.icon svg {
+  height: 1em;
+  width: 1em;
+}
+
+@media only screen and (max-width: 480px) {
+    html {
+        font-size: 12px;
+    }
+}</style>
+
         <script>history.scrollRestoration = "manual"</script>  
         <script>!function(){"use strict";function o(){var o=window,t=document;if(!("scrollBehavior"in t.documentElement.style&&!0!==o.__forceSmoothScrollPolyfill__)){var l,e=o.HTMLElement||o.Element,r=300,i={scroll:o.scroll||o.scrollTo,scrollBy:o.scrollBy,elementScroll:e.prototype.scroll||n,scrollIntoView:e.prototype.scrollIntoView},s=o.performance&&o.performance.now?o.performance.now.bind(o.performance):Date.now,c=(l=o.navigator.userAgent,new RegExp(["MSIE ","Trident/","Edge/"].join("|")).test(l)?1:0);o.scroll=o.scrollTo=function(){void 0!==arguments[0]&&(!0!==f(arguments[0])?h.call(o,t.body,void 0!==arguments[0].left?~~arguments[0].left:o.scrollX||o.pageXOffset,void 0!==arguments[0].top?~~arguments[0].top:o.scrollY||o.pageYOffset):i.scroll.call(o,void 0!==arguments[0].left?arguments[0].left:"object"!=typeof arguments[0]?arguments[0]:o.scrollX||o.pageXOffset,void 0!==arguments[0].top?arguments[0].top:void 0!==arguments[1]?arguments[1]:o.scrollY||o.pageYOffset))},o.scrollBy=function(){void 0!==arguments[0]&&(f(arguments[0])?i.scrollBy.call(o,void 0!==arguments[0].left?arguments[0].left:"object"!=typeof arguments[0]?arguments[0]:0,void 0!==arguments[0].top?arguments[0].top:void 0!==arguments[1]?arguments[1]:0):h.call(o,t.body,~~arguments[0].left+(o.scrollX||o.pageXOffset),~~arguments[0].top+(o.scrollY||o.pageYOffset)))},e.prototype.scroll=e.prototype.scrollTo=function(){if(void 0!==arguments[0])if(!0!==f(arguments[0])){var o=arguments[0].left,t=arguments[0].top;h.call(this,this,void 0===o?this.scrollLeft:~~o,void 0===t?this.scrollTop:~~t)}else{if("number"==typeof arguments[0]&&void 0===arguments[1])throw new SyntaxError("Value could not be converted");i.elementScroll.call(this,void 0!==arguments[0].left?~~arguments[0].left:"object"!=typeof arguments[0]?~~arguments[0]:this.scrollLeft,void 0!==arguments[0].top?~~arguments[0].top:void 0!==arguments[1]?~~arguments[1]:this.scrollTop)}},e.prototype.scrollBy=function(){void 0!==arguments[0]&&(!0!==f(arguments[0])?this.scroll({left:~~arguments[0].left+this.scrollLeft,top:~~arguments[0].top+this.scrollTop,behavior:arguments[0].behavior}):i.elementScroll.call(this,void 0!==arguments[0].left?~~arguments[0].left+this.scrollLeft:~~arguments[0]+this.scrollLeft,void 0!==arguments[0].top?~~arguments[0].top+this.scrollTop:~~arguments[1]+this.scrollTop))},e.prototype.scrollIntoView=function(){if(!0!==f(arguments[0])){var l=function(o){for(;o!==t.body&&!1===(e=p(l=o,"Y")&&a(l,"Y"),r=p(l,"X")&&a(l,"X"),e||r);)o=o.parentNode||o.host;var l,e,r;return o}(this),e=l.getBoundingClientRect(),r=this.getBoundingClientRect();l!==t.body?(h.call(this,l,l.scrollLeft+r.left-e.left,l.scrollTop+r.top-e.top),"fixed"!==o.getComputedStyle(l).position&&o.scrollBy({left:e.left,top:e.top,behavior:"smooth"})):o.scrollBy({left:r.left,top:r.top,behavior:"smooth"})}else i.scrollIntoView.call(this,void 0===arguments[0]||arguments[0])}}function n(o,t){this.scrollLeft=o,this.scrollTop=t}function f(o){if(null===o||"object"!=typeof o||void 0===o.behavior||"auto"===o.behavior||"instant"===o.behavior)return!0;if("object"==typeof o&&"smooth"===o.behavior)return!1;throw new TypeError("behavior member of ScrollOptions "+o.behavior+" is not a valid value for enumeration ScrollBehavior.")}function p(o,t){return"Y"===t?o.clientHeight+c<o.scrollHeight:"X"===t?o.clientWidth+c<o.scrollWidth:void 0}function a(t,l){var e=o.getComputedStyle(t,null)["overflow"+l];return"auto"===e||"scroll"===e}function d(t){var l,e,i,c,n=(s()-t.startTime)/r;c=n=n>1?1:n,l=.5*(1-Math.cos(Math.PI*c)),e=t.startX+(t.x-t.startX)*l,i=t.startY+(t.y-t.startY)*l,t.method.call(t.scrollable,e,i),e===t.x&&i===t.y||o.requestAnimationFrame(d.bind(o,t))}function h(l,e,r){var c,f,p,a,h=s();l===t.body?(c=o,f=o.scrollX||o.pageXOffset,p=o.scrollY||o.pageYOffset,a=i.scroll):(c=l,f=l.scrollLeft,p=l.scrollTop,a=n),d({scrollable:c,method:a,startTime:h,startX:f,startY:p,x:e,y:r})}}"object"==typeof exports&&"undefined"!=typeof module?module.exports={polyfill:o}:o()}();</script>
     </head>
@@ -192,7 +261,7 @@ h2 {
     max-width: 460px;
     padding: 1rem;
 
-        padding-right: calc(1rem + 16px);
+        padding-right: calc(1rem + 27px);
         background: #3A5C90;
         
             height: 80px;
@@ -289,11 +358,11 @@ h2 {
 
         
     <div id="song-title-card">
-        <span class="artist">
-            Elefánt
-        </span>
         <span class="title">
             Ikarosz
+        </span>
+        <span class="artist">
+            Elefánt
         </span>
         <div id="song-title-card-play-button">
             
@@ -391,7 +460,7 @@ h2 {
             color: #3A5C90;
         }
         @media (any-hover: hover) {
-            .dim.button:hover, .dim .button:hover {
+            .dim.button:hover {
                 border-color: #FDFF8D;
                 color: #FDFF8D;
                 transition: all .05s ease;
@@ -472,16 +541,20 @@ h2 {
             outline: none;
         }
 
-        .artist {
-            color: #FFFFFF;
-            font-size: 2rem;
-        }
         
-        .title {
-            display: block;
-            width: 100%;
-            color: #FFFFFF;
-        }
+.artist {
+    display: block;
+    width: 100%;
+    color: #B2FF8D;
+}
+
+        
+.title {
+    display: block;
+    color: #FDFF8D;
+    font-size: 2rem;
+}
+
 
         #song-title-card-play-button {
             width: 80%;
@@ -542,10 +615,12 @@ h2 {
         }
 
         .phrase-translation {
-            font-size: 1rem;
             margin-left: 1rem;
             color: rgba(255, 255, 255, 0.25);
             transition: 0.4s;
+            position: relative;
+            top: 4px;
+            font-size: 1.4rem;
         }
         @media only screen and (max-width: 480px) {
             .phrase-translation {
@@ -787,319 +862,12 @@ h2 {
     </div>
 
             
-                
-    <div id="phrase-number-20" class="phrase-container">
-        <div class="phrase-original">
-            kicsit veszélyes
-        </div>
-        <div class="phrase-translation">
-            a little dangerous
-        </div>
-    </div>
-
-            
-                
-    <div id="phrase-number-21" class="phrase-container">
-        <div class="phrase-original">
-            jó, ha van nálad
-        </div>
-        <div class="phrase-translation">
-            it's good if you have on you
-        </div>
-    </div>
-
-            
-                
-    <div id="phrase-number-22" class="phrase-container">
-        <div class="phrase-original">
-            napszemüveg meg
-        </div>
-        <div class="phrase-translation">
-            sunglasses and
-        </div>
-    </div>
-
-            
-                
-    <div id="phrase-number-23" class="phrase-container">
-        <div class="phrase-original">
-            egy kis naptej
-        </div>
-        <div class="phrase-translation">
-            some suncream
-        </div>
-    </div>
-
-            
-                
-    <div id="phrase-number-24" class="phrase-container">
-        <div class="phrase-original">
-            nem menthettelek meg én
-        </div>
-        <div class="phrase-translation">
-            I couldn't have saved you
-        </div>
-    </div>
-
-            
-                
-    <div id="phrase-number-25" class="phrase-container">
-        <div class="phrase-original">
-            és te sem menthettél meg
-        </div>
-        <div class="phrase-translation">
-            and neither could you have saved me
-        </div>
-    </div>
-
-            
-                
-    <div id="phrase-number-26" class="phrase-container">
-        <div class="phrase-original">
-            nem menthettél meg
-        </div>
-        <div class="phrase-translation">
-            you couldn't have saved me
-        </div>
-    </div>
-
-            
-                
-    <div id="phrase-number-27" class="phrase-container">
-        <div class="phrase-original">
-            és én sem 
-        </div>
-        <div class="phrase-translation">
-            and neither I
-        </div>
-    </div>
-
-            
-                
-    <div id="phrase-number-28" class="phrase-container">
-        <div class="phrase-original">
-            menthetlek meg téged
-        </div>
-        <div class="phrase-translation">
-            can save you
-        </div>
-    </div>
-
-            
-                
-    <div id="phrase-number-29" class="phrase-container">
-        <div class="phrase-original">
-            nem menthettél meg
-        </div>
-        <div class="phrase-translation">
-            you couldn't have saved me
-        </div>
-    </div>
-
-            
-                
-    <div id="phrase-number-30" class="phrase-container">
-        <div class="phrase-original">
-            és én sem 
-        </div>
-        <div class="phrase-translation">
-            and neither I
-        </div>
-    </div>
-
-            
-                
-    <div id="phrase-number-31" class="phrase-container">
-        <div class="phrase-original">
-            menthetlek meg téged
-        </div>
-        <div class="phrase-translation">
-            can save you
-        </div>
-    </div>
-
-            
-                
-    <div id="phrase-number-32" class="phrase-container">
-        <div class="phrase-original">
-            nem menthettél meg
-        </div>
-        <div class="phrase-translation">
-            you couldn't have saved me
-        </div>
-    </div>
-
-            
-                
-    <div id="phrase-number-33" class="phrase-container">
-        <div class="phrase-original">
-            és én sem 
-        </div>
-        <div class="phrase-translation">
-            and neither I
-        </div>
-    </div>
-
-            
-                
-    <div id="phrase-number-34" class="phrase-container">
-        <div class="phrase-original">
-            menthetlek meg téged
-        </div>
-        <div class="phrase-translation">
-            can save you
-        </div>
-    </div>
-
-            
-                
-    <div id="phrase-number-35" class="phrase-container">
-        <div class="phrase-original">
-            nem menthettelek meg én
-        </div>
-        <div class="phrase-translation">
-            I couldn't have saved you
-        </div>
-    </div>
-
-            
-                
-    <div id="phrase-number-36" class="phrase-container">
-        <div class="phrase-original">
-            és te sem menthettél meg
-        </div>
-        <div class="phrase-translation">
-            and neither could you have saved me
-        </div>
-    </div>
-
-            
-                
-    <div id="phrase-number-37" class="phrase-container">
-        <div class="phrase-original">
-            nem menthettél meg
-        </div>
-        <div class="phrase-translation">
-            you couldn't have saved me
-        </div>
-    </div>
-
-            
-                
-    <div id="phrase-number-38" class="phrase-container">
-        <div class="phrase-original">
-            és én sem 
-        </div>
-        <div class="phrase-translation">
-            and neither I
-        </div>
-    </div>
-
-            
-                
-    <div id="phrase-number-39" class="phrase-container">
-        <div class="phrase-original">
-            menthetlek meg téged
-        </div>
-        <div class="phrase-translation">
-            can save you
-        </div>
-    </div>
-
-            
-                
-    <div id="phrase-number-40" class="phrase-container">
-        <div class="phrase-original">
-            nem menthettél meg
-        </div>
-        <div class="phrase-translation">
-            you couldn't have saved me
-        </div>
-    </div>
-
-            
-                
-    <div id="phrase-number-41" class="phrase-container">
-        <div class="phrase-original">
-            és én sem 
-        </div>
-        <div class="phrase-translation">
-            and neither I
-        </div>
-    </div>
-
-            
-                
-    <div id="phrase-number-42" class="phrase-container">
-        <div class="phrase-original">
-            menthetlek meg téged
-        </div>
-        <div class="phrase-translation">
-            can save you
-        </div>
-    </div>
-
-            
-                
-    <div id="phrase-number-43" class="phrase-container">
-        <div class="phrase-original">
-            nem menthettél meg
-        </div>
-        <div class="phrase-translation">
-            you couldn't have saved me
-        </div>
-    </div>
-
-            
-                
-    <div id="phrase-number-44" class="phrase-container">
-        <div class="phrase-original">
-            és senki nem 
-        </div>
-        <div class="phrase-translation">
-            and nobody
-        </div>
-    </div>
-
-            
-                
-    <div id="phrase-number-45" class="phrase-container">
-        <div class="phrase-original">
-            menthet meg senkit
-        </div>
-        <div class="phrase-translation">
-            can save nobody
-        </div>
-    </div>
-
-            
-                
-    <div id="phrase-number-46" class="phrase-container">
-        <div class="phrase-original">
-            itt senki nem 
-        </div>
-        <div class="phrase-translation">
-            here nobody
-        </div>
-    </div>
-
-            
-                
-    <div id="phrase-number-47" class="phrase-container">
-        <div class="phrase-original">
-            menthet meg senkit
-        </div>
-        <div class="phrase-translation">
-            can save nobody
-        </div>
-    </div>
-
-            
         </div>
         
     <div id="song-controls-wrapper">
-        <div id="song-controls-grid">
-            <div class="song-controls-button-wrapper dim" onClick="rewind()">
+        
+        <div id="song-controls-main-grid">
+            <div class="song-controls-button-wrapper" onClick="rewind()">
                 
     <a 
         
@@ -1109,6 +877,8 @@ h2 {
             
                 icon
             
+            
+                dim
             
             
         " 
@@ -1221,7 +991,7 @@ h2 {
             color: #3A5C90;
         }
         @media (any-hover: hover) {
-            .dim.button:hover, .dim .button:hover {
+            .dim.button:hover {
                 border-color: #FDFF8D;
                 color: #FDFF8D;
                 transition: all .05s ease;
@@ -1243,7 +1013,7 @@ h2 {
 
             </div>
             <div></div>
-            <div class="song-controls-button-wrapper dim" onClick="jump_forward()">
+            <div class="song-controls-button-wrapper" onClick="jump_forward()">
                 
     <a 
         
@@ -1253,6 +1023,8 @@ h2 {
             
                 icon
             
+            
+                dim
             
             
         " 
@@ -1360,7 +1132,7 @@ h2 {
             color: #3A5C90;
         }
         @media (any-hover: hover) {
-            .dim.button:hover, .dim .button:hover {
+            .dim.button:hover {
                 border-color: #FDFF8D;
                 color: #FDFF8D;
                 transition: all .05s ease;
@@ -1379,10 +1151,10 @@ h2 {
             margin: auto;
         }
     </style>
-
+   
             </div>
             <div></div>
-            <div id="pause_button" class="song-controls-button-wrapper dim hidden" onClick="pause()">
+            <div id="pause-button" class="song-controls-button-wrapper hidden" onClick="pause()">
                 
     <a 
         
@@ -1392,6 +1164,8 @@ h2 {
             
                 icon
             
+            
+                dim
             
             
         " 
@@ -1499,7 +1273,7 @@ h2 {
             color: #3A5C90;
         }
         @media (any-hover: hover) {
-            .dim.button:hover, .dim .button:hover {
+            .dim.button:hover {
                 border-color: #FDFF8D;
                 color: #FDFF8D;
                 transition: all .05s ease;
@@ -1520,7 +1294,7 @@ h2 {
     </style>
 
             </div>
-            <div id="play_button" class="song-controls-button-wrapper dim" onClick="play()">
+            <div id="play-button" class="song-controls-button-wrapper" onClick="play()">
                 
     <a 
         
@@ -1530,6 +1304,8 @@ h2 {
             
                 icon
             
+            
+                dim
             
             
         " 
@@ -1637,7 +1413,7 @@ h2 {
             color: #3A5C90;
         }
         @media (any-hover: hover) {
-            .dim.button:hover, .dim .button:hover {
+            .dim.button:hover {
                 border-color: #FDFF8D;
                 color: #FDFF8D;
                 transition: all .05s ease;
@@ -1663,8 +1439,8 @@ h2 {
 
     <style>
     
-        #song-controls-grid {
-            width: 100%;
+        #song-controls-main-grid {
+            width: auto;
             height: 100px;
             background: #27487B;
             
@@ -1678,7 +1454,7 @@ h2 {
         @media screen and (max-width: 860px)
             and (max-height: 480px) 
             and (orientation: landscape) {
-                #song-controls-grid {
+                #song-controls-main-grid {
                     width: auto;
                     margin: 0 auto 0 1rem;
                     grid-template-rows: 1fr 10px 1fr 10px 1fr;
@@ -1712,6 +1488,7 @@ h2 {
     -ms-user-select: none;
     user-select: none;
 
+                overflow: auto; 
 
         }
         @media screen and (max-width: 860px)
@@ -1724,13 +1501,12 @@ h2 {
                     padding-right: 1rem;
                 }
         }
-
     </style>
 
     <script>
     window.addEventListener('load',
         function () {
-            const song_controls = document.querySelectorAll('.song-controls-button-wrapper');
+            const song_controls = document.querySelectorAll('.song-controls-button-wrapper .button');
 
             function dim_song_controls(should_dim) {
                 if (should_dim === true) {
@@ -1778,14 +1554,14 @@ h2 {
                 current_phrase_number++;
                 set_active_phrase(current_phrase_number);
                 youtube_player.seekTo(phrase_times[current_phrase_number]);
-                if (youtube_player.getPlayerState === (YT.PlayerState.PLAYING || YT.PlayerState.BUFFERING)) {
+                if (youtube_player.getPlayerState() === YT.PlayerState.PLAYING || youtube_player.getPlayerState() === YT.PlayerState.BUFFERING) {
                     start_updating_current_phrase_number();
                 }
             }
         }
 
-        const pause_button = document.getElementById("pause_button");
-        const play_button = document.getElementById("play_button");
+        const pause_button = document.getElementById("pause-button");
+        const play_button = document.getElementById("play-button");
 
         function toggle_play_pause_buttons(button_to_show) {
             if (button_to_show == "play") {
@@ -1799,6 +1575,13 @@ h2 {
         }
         
         function play() {
+            if (youtube_player.getCurrentTime() === 0) {
+                window.scrollTo({
+                    left: 0,
+                    top: phrase_container_positions[0] - viewport_height / 2,
+                    behavior: 'smooth',
+                });
+            }
             start_updating_current_phrase_number();
             youtube_player.playVideo();
             toggle_play_pause_buttons("pause");
@@ -1812,125 +1595,3 @@ h2 {
 
 
         
-
-<script>
-    const phrase_times = [11.4, 14.7, 17.6, 20.6, 23.5, 26.6, 29.9, 33.1, 36.1, 39.1, 42.1, 45.1, 48.2, 51.4, 54.4, 57.5, 73.3, 76.1, 79.0, 82.0, 85.2, 88.4, 91.4, 94.3, 135.5, 138.9, 141.5, 144.2, 145.3, 147.7, 150.2, 151.5, 153.9, 156.5, 157.7, 160.1, 163.6, 166.1, 168.8, 169.9, 172.4, 175.0, 176.0, 178.5, 181.1, 183.3, 184.7, 185.5];
-
-    const time_between_current_phrase_number_updates = 100;
-    // TODO: Check if var can be replaced with let
-    var current_phrase_number = -1;
-
-    //TODO: Detect viewport changes and recalculate positions and window.innerHeight
-    const viewport_height = window.innerHeight;
-    const phrase_containers = document.querySelectorAll('.phrase-container');
-    const phrase_container_positions = Array.from(phrase_containers).map(container => container.getBoundingClientRect().top);
-
-    const set_active_phrase = (phrase_number, instant=false) => {
-        phrase_containers.forEach(container => {
-            container.classList.remove("active");
-        });
-        if (current_phrase_number >= 0 && current_phrase_number < phrase_containers.length) {
-            window.scrollTo({
-                left: 0,
-                top: phrase_container_positions[phrase_number] - viewport_height / 2,
-                behavior: instant ? 'auto' : 'smooth',
-            });
-            phrase_containers[phrase_number].classList.add('active');
-        }
-    }
-
-    const update_current_phrase_number = () => {
-        const current_time = youtube_player.getCurrentTime();
-        for (let i = 0; i < phrase_times.length; i++) {
-            if ((current_time < phrase_times[i+1] || typeof phrase_times[i+1] === 'undefined' ) && current_time > phrase_times[i]) {
-                    current_phrase_number = i;
-                    set_active_phrase(current_phrase_number);
-                    break
-            }
-        }
-    }
-    let recurring_update_of_current_phrase_number = null;
-    const start_updating_current_phrase_number = () => {
-        if (recurring_update_of_current_phrase_number !== null) {
-            stop_updating_current_phrase_number();
-        }
-        recurring_update_of_current_phrase_number = setInterval(update_current_phrase_number, time_between_current_phrase_number_updates);
-    }
-    const stop_updating_current_phrase_number = () => {
-        if (recurring_update_of_current_phrase_number === null) return;
-        clearInterval(recurring_update_of_current_phrase_number);
-        recurring_update_of_current_phrase_number = null;
-    }
-    
-</script>
-
-
-
-        
-    <script>
-        // Load the IFrame Player API code asynchronously.
-        const tag = document.createElement('script');
-        tag.src = "https://www.youtube.com/player_api";
-        const first_script_tag = document.getElementsByTagName('script')[0];
-        first_script_tag.parentNode.insertBefore(tag, first_script_tag);
-        let youtube_player;
-        function on_player_state_change(event) {
-            // YouTube Player API event reference: https://developers.google.com/youtube/iframe_api_reference#Events
-            if (event.data === 1 || event.data === 3) {
-                toggle_play_pause_buttons("pause");
-            } else if (event.data === -1 || event.data === 0 || event.data === 2 || event.data === 5) {
-                toggle_play_pause_buttons("play");
-            }
-        }
-        let should_display_video_controls = screen.width < 480 ? 0 : 1;
-        function onYouTubeIframeAPIReady() {
-            youtube_player = new YT.Player("youtube-player", {
-            height: '100',
-            width: '200',
-            videoId: 'hetpGnLJt8Y',
-                events: {
-                'onStateChange': on_player_state_change,
-                },
-            playerVars: {
-                modestbranding: 1, // Remove YouTube logo from controls bar
-                iv_load_policy: 3,
-                playsinline: 1,
-                fs: 0, // Hide annotations
-                controls: should_display_video_controls,
-            }
-        });
-        }
-    </script>
-    <style>
-        #youtube-player {
-            position: fixed;
-            top: 0.4rem;
-            right: 0.25rem;
-            z-index: 3;
-            border-radius: 7px;
-            opacity: 0.2;
-        }
-         @media only screen and (max-width: 480px) {
-         #youtube-player {
-                max-height: 73px;
-            }
-        }
-         @media screen and (max-width: 860px)
-            and (max-height: 480px) 
-            and (orientation: landscape) {
-             #youtube-player {
-                max-height: 73px;
-                top: 0;
-            }   
-        }
-
-        #youtube-player:hover {
-            opacity: 1;
-            transition: 0.2s opacity;
-        }
-    </style>
-    <div id="youtube-player"></div>
-
-        <script data-goatcounter="https://sasl.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-    </body>
-</html>
