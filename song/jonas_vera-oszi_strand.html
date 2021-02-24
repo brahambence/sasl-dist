@@ -113,12 +113,8 @@ h2 {
     })(window,document,window['_fs_namespace'],'script','user');
 </script>
         <script>history.scrollRestoration = "manual"</script>  
-        <script>
+        <script>'use strict';
 
-
-'use strict';
-
-// polyfill
 function polyfill() {
   // aliases
   var w = window;
@@ -545,6 +541,14 @@ if (typeof exports === 'object' && typeof module !== 'undefined') {
   // global
   polyfill();
 }</script>
+        <script>
+            window.addEventListener('load', (event) => {
+                
+                if (/iPhone/i.test(navigator.userAgent) && pageYOffset === 0) {
+                    window.scrollTo(0, 1);
+                }
+            });
+        </script> 
     </head>
 
     <body>
@@ -659,6 +663,7 @@ if (typeof exports === 'object' && typeof module !== 'undefined') {
         background: #3A5C90;
         
             height: 80px;
+            padding-top: 1.2rem;
         
     }        
 
@@ -981,6 +986,11 @@ if (typeof exports === 'object' && typeof module !== 'undefined') {
                     display: block;
                     margin-top: 50vh;
                     margin-bottom: 8rem;
+                }
+                @media only screen and (max-width: 480px) {
+                    #phrases-wrapper {
+                        margin-bottom: 10rem;
+                    }
                 }
             </style>
             
@@ -2218,6 +2228,35 @@ if (typeof exports === 'object' && typeof module !== 'undefined') {
 
     <style>
     
+        #song-controls-wrapper {
+            width: 100vw;
+            background: #27487B;
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding-top: 1rem;
+            
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+
+            overflow: hidden;
+        }
+        @media screen and (max-width: 860px)
+            and (max-height: 480px) 
+            and (orientation: landscape) {
+                #song-controls-wrapper {
+                    width: 80px;
+                    right: unset;
+                    top: 74px;
+                    padding-right: 1rem;
+                }
+        }
+
         #song-controls-main-grid {
             width: auto;
             height: 100px;
@@ -2249,36 +2288,6 @@ if (typeof exports === 'object' && typeof module !== 'undefined') {
         }
         .song-controls-button-wrapper .button-label{
             top: 45%;
-        }
-
-        #song-controls-wrapper {
-                width: 100vw;
-                background: #27487B;
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                padding-top: 1rem;
-                
-    -webkit-touch-callout: none;
-    -webkit-user-select: none;
-    -khtml-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-
-                overflow: auto; 
-
-        }
-        @media screen and (max-width: 860px)
-            and (max-height: 480px) 
-            and (orientation: landscape) {
-                #song-controls-wrapper {
-                    width: 80px;
-                    right: unset;
-                    top: 74px;
-                    padding-right: 1rem;
-                }
         }
     </style>
 
@@ -2370,6 +2379,13 @@ if (typeof exports === 'object' && typeof module !== 'undefined') {
             youtube_player.pauseVideo();
             toggle_play_pause_buttons("play");
         }
+        function stop() {
+            stop_updating_current_phrase_number();
+            youtube_player.pauseVideo();
+            youtube_player.seekTo(0);
+            console.log(youtube_player.getCurrentTime());
+            toggle_play_pause_buttons("play");
+        }
     </script>
 
 
@@ -2433,6 +2449,49 @@ if (typeof exports === 'object' && typeof module !== 'undefined') {
         recurring_update_of_current_phrase_number = null;
     }
     
+    function prevent_manual_scrolling (event) {
+        // TODO: Set animation duration in central template
+        event.preventDefault();
+        document.getElementById('toggle-autoscroll').classList.add('attention');
+        setTimeout(() => {
+            document.getElementById('toggle-autoscroll').classList.remove('attention');
+        }, 500);
+    }
+
+    const enable_manual_scrolling = (enable) => {
+        if (enable === false) {
+            document.addEventListener('wheel', prevent_manual_scrolling, {passive: false});
+            return
+        }
+        else if (enable === true) {
+            document.removeEventListener('wheel', prevent_manual_scrolling);
+            return
+        }
+    }
+
+    
+    let scroll_bar_width = undefined;
+    const get_scrollbar_width = () => {
+        if (!scroll_bar_width) {
+            // Based on comment in: https://stackoverflow.com/questions/13382516/getting-scroll-bar-width-using-javascript
+            // Creating invisible container
+            const outer = document.createElement('div');
+            outer.style.visibility = 'hidden';
+            outer.style.overflow = 'scroll'; // forcing scrollbar to appear
+            outer.style.msOverflowStyle = 'scrollbar'; // needed for WinJS apps
+            document.body.appendChild(outer);
+            // Creating inner element and placing it in the container
+            const inner = document.createElement('div');
+            outer.appendChild(inner);
+            // Calculating difference between container's full width and the child width
+            const _scroll_bar_width = (outer.offsetWidth - inner.offsetWidth);
+            // Removing temporary elements from the DOM
+            outer.parentNode.removeChild(outer);
+            scroll_bar_width = _scroll_bar_width;
+        }
+        return scroll_bar_width
+    }
+    
 </script>
 
 
@@ -2447,10 +2506,22 @@ if (typeof exports === 'object' && typeof module !== 'undefined') {
         let youtube_player;
         function on_player_state_change(event) {
             // YouTube Player API event reference: https://developers.google.com/youtube/iframe_api_reference#Events
-            if (event.data === 1 || event.data === 3) {
+            // TODO: Replace numbers with YT.STATE enums for clarity
+            if (event.data === YT.PlayerState.PLAYING || event.data === YT.PlayerState.BUFFERING) {
                 toggle_play_pause_buttons("pause");
-            } else if (event.data === -1 || event.data === 0 || event.data === 2 || event.data === 5) {
+                enable_manual_scrolling(!playback_settings.autoscroll, "eventdata " + event.data);
+            } else if (event.data === YT.PlayerState.UNSTARTED || event.data ===  YT.PlayerState.PAUSED|| event.data === YT.PlayerState.CUED) {
                 toggle_play_pause_buttons("play");
+                enable_manual_scrolling(true, "eventdata " + event.data);
+            } else if (event.data === YT.PlayerState.ENDED) {
+                stop();
+            }
+
+            // enable or disable manual scrolling
+            if (event.data === YT.PlayerState.PLAYING) {
+                enable_manual_scrolling(!playback_settings.autoscroll);
+            } else {
+                enable_manual_scrolling(true);
             }
         }
         let should_display_video_controls = screen.width < 480 ? 0 : 1;
@@ -2475,8 +2546,8 @@ if (typeof exports === 'object' && typeof module !== 'undefined') {
     <style>
         #youtube-player {
             position: fixed;
-            top: 0.4rem;
-            right: 0.25rem;
+            top: 8px;
+            right: 16px;
             z-index: 3;
             border-radius: 7px;
             opacity: 0.2;
@@ -2520,6 +2591,11 @@ if (typeof exports === 'object' && typeof module !== 'undefined') {
     function toggle_autoscroll() {
         playback_settings.autoscroll = !playback_settings.autoscroll;
         playback_settings_toggles.autoscroll.classList.toggle('on');
+        if (playback_settings.autoscroll && youtube_player.getPlayerState() === YT.PlayerState.PLAYING) {
+            enable_manual_scrolling(false);
+        } else if (!playback_settings.autoscroll) {
+            enable_manual_scrolling(true);
+        }
     }
 </script>
 
@@ -2652,6 +2728,43 @@ if (typeof exports === 'object' && typeof module !== 'undefined') {
         }
         .toggle.on .toggle-status-off {
             display: none;
+        }
+
+        .toggle.attention {
+            animation-name: highlight;
+            animation-duration: .5s;
+            animation-iteration-count: 1;
+            animation-direction: alternate;
+            animation-timing-function: ease-in-out;
+        }
+        @keyframes highlight {
+            0% {
+                border-color: rgba(255, 255, 255, 0.25);
+                color: rgba(255, 255, 255, 0.25);
+            }
+            40% {
+                border-color: #FFFFFF;
+                color: #FFFFFF;
+            }
+            50% {
+                border-color: #FDFF8D;
+                color: #FDFF8D;
+            }
+        }
+        @keyframes highlight-status-on {
+            0% {
+                color: rgba(255, 255, 255, 0.25);
+            }
+            40% {
+                color: #B2FF8D;
+            }
+        }
+        .toggle.attention .toggle-status-on {
+            animation-name: highlight-status-on;
+            animation-duration: .5s;
+            animation-iteration-count: 1;
+            animation-direction: alternate;
+            animation-timing-function: ease-in-out;
         }
         
     </style>
