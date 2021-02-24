@@ -2407,6 +2407,10 @@ if (typeof exports === 'object' && typeof module !== 'undefined') {
     }
 
     const update_current_phrase_number = () => {
+        if (youtube_player.getPlayerState() === YT.PlayerState.BUFFERING) {
+            return // avoid jumping back and forth when desired time and actual playertime are different due to buffering
+        }
+
         const current_time = youtube_player.getCurrentTime();
         for (let i = 0; i < phrase_times.length; i++) {
             if ((current_time < phrase_times[i+1] || typeof phrase_times[i+1] === 'undefined' ) && current_time > phrase_times[i]) {
